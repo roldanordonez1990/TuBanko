@@ -9,11 +9,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="portal.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">BANKONTER <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">BANKONTER</div>
       </a>
 
 
@@ -31,13 +31,6 @@
           <span>Situacion Global</span>
         </a>
         
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -46,15 +39,6 @@
           <i class="fas fa-fw fa-wrench"></i>
           <span>Transferencias</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
       </li>
 
       <!-- Divider -->
@@ -332,13 +316,13 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">¿Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">x</span>
           </button>
         </div>
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesion.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Quedarme</button>
-          <a class="btn btn-primary" href="login.jsp">Deseo salir</a>
+          <a class="btn btn-primary" href="../login.html">Deseo salir</a>
         </div>
       </div>
     </div>
