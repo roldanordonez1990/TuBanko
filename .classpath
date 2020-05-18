@@ -20,5 +20,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
+	<classpathentry kind="lib" path="C:/Users/Francisco Roldán/git/TutorialJava/librerias/Apache_Commons_FileUpload/commons-fileupload-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Francisco Roldán/git/TutorialJava/librerias/Apache_Commons_IO/commons-io-2.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
