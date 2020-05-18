@@ -10,10 +10,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="portal.jsp">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">BANKONTER</div>
+        <img src="../res/TuBanKo.png" alt="logo" style="width:70%">
       </a>
 
 
@@ -314,15 +311,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Â¿Realmente desea salir?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">¿Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">xÂ—</span>
+            <span aria-hidden="true">—</span>
           </button>
         </div>
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesion.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Quedarme</button>
-          <a class="btn btn-primary" href="../login.html">Deseo salir</a>
+          <a class="btn btn-primary" href="../index.html">Deseo salir</a>
         </div>
       </div>
     </div>
