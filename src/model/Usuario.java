@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-//TuBanko
+//TuBanko  
 
 /**
  * The persistent class for the usuario database table.
