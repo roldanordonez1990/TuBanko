@@ -90,6 +90,39 @@
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
 	<script src="js/jquery-utils.js"></script>
+	<script>
+		  $(document).ready(function () {
+		
+		    // Acción a realizar cuando el usuario pulse el botón "#btnEntrar". Recordar que dicho botón tiene que incluir el type="button". Si no se pusiera
+		    // ese type el botón se comportaría por defecto como type="submit" y enviaría el formulario, cosa que no es lo que queremos.
+		    $("#btnEntrar").click(function(){
+		      
+		      insertWaitingIcon($("#spinner")); // Hago que un componente incorpore el símbolo de carga
+		      
+		      // Construyo un objeto con los datos del formulario introducidos por el usuario
+		      var obj = { usuOrEmail: $("#usuOrEmail").val(), 
+		                  pass: $("#pass").val() };
+		
+		      // Envío la petición JSON
+		      sendJsonRequest("/AutenticarUsuario", // URL a la que envío la petición
+		        JSON.stringify(obj),  // Datos JSON que envío al Servlet
+		        function (data, status) {  // Función que se ejecutará cuando la petición se realice con éxito
+		          if (data == null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
+		            showAlertMessage($("#login-container"), ALERT_DANGER, "Error", "El usuario y/o contrase&ntilde;a introducidos no son v&aacute;lidos");
+		          }
+		          else { // Autenticación correcta, redirigimos al portal de la aplicación.
+		            window.location.href = "portal.jsp";
+		          }
+		          removeWaitingIcon($("#spinner"));  // Detengo la animación de "Waiting"
+		        }, 
+		        function (resumenError) {  // Función que se ejecutará si la petición web sale mal
+		          showAlertMessage($("#login-container"), ALERT_DANGER, "Error inesperado: ", resumenError); // Muestro una alerta
+		          removeWaitingIcon($("#spinner")); // Detengo la animación de "Waiting"
+		        });
+		    });
+		  });
+
+</script>
 
 </body>
 

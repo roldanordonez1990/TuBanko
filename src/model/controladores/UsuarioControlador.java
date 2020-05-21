@@ -176,5 +176,23 @@ public class UsuarioControlador extends Controlador {
 		return usuario.getNombreUsuario() + " " + usuario.getPassword() + " " + usuario.getEmail();
 				
 	}
+	
+	
+	public Usuario findByPasswordAndUsernameOrMail (String userName, String mail, String password) {
+		EntityManager em = getEntityManagerFactory().createEntityManager();
+		Usuario u = null;
+		try {
+			
+			Query q = em.createNativeQuery("SELECT * FROM usuario where (nombreUsuario = ? or email = ?) and password = ? limit 1;", Usuario.class);
+			q.setParameter(1, userName);
+			q.setParameter(2, mail);
+			q.setParameter(3, password);
+			u = (Usuario) q.getSingleResult();
+		}
+		catch (NoResultException nrEx) {
+		}
+		em.close();
+		return u;
+	}
 
 }
