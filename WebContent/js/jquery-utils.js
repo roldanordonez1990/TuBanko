@@ -111,7 +111,7 @@ function showAlertMessage(container, type, shortMsg, msg) {
         '<span aria-hidden="true">&times;</span>' +
         '</button> ' +
         '</div>';
-
+    //b
     // Después de construir el html, finalmente lo muestro con una animación
     setTimeout(function () {
         container.prepend(htmlToPrepend);
