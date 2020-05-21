@@ -22,7 +22,7 @@ public class UsuarioControlador extends Controlador {
 	
 
 	public UsuarioControlador() {
-		super(Usuario.class, "bankonter");
+		super(Usuario.class, "TuBanko");
 	}
 
 	public static UsuarioControlador getControlador() {
