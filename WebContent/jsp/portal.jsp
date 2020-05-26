@@ -322,7 +322,7 @@
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesion.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Quedarme</button>
-          <a class="btn btn-primary" href="../index.html">Deseo salir</a>
+          <a class="btn btn-primary" href="index.jsp">Deseo salir</a>
         </div>
       </div>
     </div>

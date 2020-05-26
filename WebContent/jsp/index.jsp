@@ -1,7 +1,7 @@
 <jsp:include page="cabecera.jsp" flush="true">
 	<jsp:param name="tituloDePagina" value="Login" />
 </jsp:include>
-
+    
 <script>
   $(document).ready(function() {
 
@@ -47,7 +47,7 @@
 				<img src="../res/TuBanKo.png" style="width: 55%;"
 					class="mx-auto d-block">
 
-				<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card o-hidden border-0 shadow-lg my-5 " id="login-container">
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row">
@@ -66,7 +66,7 @@
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
-												id="pass" placeholder="Contraseña">
+												id="pass" placeholder="Contrase�a">
 										</div>
 										<button type="button"
 											class="btn btn-primary btn-user btn-block" id="btnEntrar"> Iniciar
@@ -75,7 +75,7 @@
 									</form>
 									<div class="text-center">
 										<a class="small" href="forgot-password.html">�Se te olvid�
-											tu contraseña?</a>
+											tu contrase�a?</a>
 									</div>
 									<div class="text-center">
 										<a class="small" href="register.html">�Crea una Cuenta!</a>
