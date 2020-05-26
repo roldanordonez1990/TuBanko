@@ -314,9 +314,9 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">ï¿½Realmente desea salir?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">¿Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">ï¿½</span>
+            <span aria-hidden="true">x</span>
           </button>
         </div>
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesion.</div>
