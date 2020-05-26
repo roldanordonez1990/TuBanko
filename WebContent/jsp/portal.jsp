@@ -1,7 +1,10 @@
 <%@ include file="cabecera.jsp"%>
 
+
 <body id="page-top">
 
+
+  
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -311,9 +314,9 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Realmente desea salir?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">ï¿½Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">—</span>
+            <span aria-hidden="true">ï¿½</span>
           </button>
         </div>
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesion.</div>
@@ -325,21 +328,9 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="../js/sb-admin-2.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="../js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="../vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="../js/demo/chart-area-demo.js"></script>
-  <script src="../js/demo/chart-pie-demo.js"></script>
+  
 
 <%@ include file="pie.jsp"%>

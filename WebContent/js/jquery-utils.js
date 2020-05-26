@@ -34,6 +34,8 @@ function getRequestParameters() {
     return requestParams;
 };
 
+
+
 /**
  * Hace una llamada a un request JSON, pasando un json de envío y recibiendo una respuesta.
  * Además también se encarga de activar la ventana modal de "cargando" y de desactivarla cuando
@@ -44,8 +46,8 @@ function getRequestParameters() {
  * @param {*} errorFunction 
  */
 function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction) {
-    //url = servletsPrefix + url;
-    $.ajax(url, {
+//    url = servletsPrefix + url;
+    $.ajax("TuBanco" + url, {
         data: jsonSendingData,
         contentType: 'application/json',
         type: 'POST',

@@ -55,30 +55,30 @@
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">Inicia sesión en
+										<h1 class="h4 text-gray-900 mb-4">Inicia sesiï¿½n en
 											TuBanKo</h1>
 									</div>
 									<form class="user">
 										<div class="form-group">
 											<input type="email" class="form-control form-control-user"
-												id="exampleInputEmail" aria-describedby="emailHelp"
+												id="usuOrEmail" aria-describedby="emailHelp"
 												placeholder="Introduce tu correo electronico...">
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
-												id="exampleInputPassword" placeholder="ContraseÃ±a">
+												id="pass" placeholder="ContraseÃ±a">
 										</div>
 										<button type="button"
 											class="btn btn-primary btn-user btn-block" id="btnEntrar"> Iniciar
-											Sesión </button>
+											Sesiï¿½n </button>
 										<hr>
 									</form>
 									<div class="text-center">
-										<a class="small" href="forgot-password.html">¿Se te olvidó
+										<a class="small" href="forgot-password.html">ï¿½Se te olvidï¿½
 											tu contraseÃ±a?</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="register.html">¡Crea una Cuenta!</a>
+										<a class="small" href="register.html">ï¿½Crea una Cuenta!</a>
 									</div>
 								</div>
 							</div>
