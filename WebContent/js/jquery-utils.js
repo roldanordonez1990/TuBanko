@@ -47,7 +47,7 @@ function getRequestParameters() {
  */
 function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction) {
 //    url = servletsPrefix + url;
-    $.ajax("TuBanco" + url, {
+    $.ajax("/TuBanko" + url, {
         data: jsonSendingData,
         contentType: 'application/json',
         type: 'POST',
