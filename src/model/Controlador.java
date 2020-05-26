@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
+   
 public class Controlador {
 
 	private static EntityManagerFactory entityManagerFactory;
