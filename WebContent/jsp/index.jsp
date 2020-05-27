@@ -5,8 +5,8 @@
 <script>
 	$(document).ready(function() {
   
-		var loginImages = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"]
-    $("#loginIma").css("background", "url('../img/" + loginImages[Math.floor(Math.random() * loginImages.length)] + "')");
+		var loginImages = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg"]
+    $("#loginIma").css("background", "url('../images/" + loginImages[Math.floor(Math.random() * loginImages.length)] + "')");
     $("#loginIma").css("background-position", "center");
     $("#loginIma").css("background-size", "cover");
   
