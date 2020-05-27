@@ -3,36 +3,41 @@
 </jsp:include>
     
 <script>
-  $(document).ready(function() {
-
-    // AcciÃ³n a realizar cuando el usuario pulse el botÃ³n "#btnEntrar". Recordar que dicho botÃ³n tiene que incluir el type="button". Si no se pusiera
-    // ese type el botÃ³n se comportarÃ­a por defecto como type="submit" y enviarÃ­a el formulario, cosa que no es lo que queremos.
-    $("#btnEntrar").click(function() {
-      
-      // insertWaitingIcon($("#spinner")); // Hago que un componente incorpore el sÃ­mbolo de carga
-      
-      // Construyo un objeto con los datos del formulario introducidos por el usuario
-      var obj = { usuOrEmail: $("#usuOrEmail").val(), 
-                  pass: $("#pass").val() };
-
-      // EnvÃ­o la peticiÃ³n JSON
-      sendJsonRequest("/Login", // URL a la que envÃ­o la peticiÃ³n
-        JSON.stringify(obj),  // Datos JSON que envÃ­o al Servlet
-        function (data, status) {  // FunciÃ³n que se ejecutarÃ¡ cuando la peticiÃ³n se realice con Ã©xito
-          if (data == null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
-            showAlertMessage($("#login-container"), ALERT_DANGER, "Error", "El usuario y/o contrase&ntilde;a introducidos no son v&aacute;lidos");
-          }
-          else { // AutenticaciÃ³n correcta, redirigimos al portal de la aplicaciÃ³n.
-            window.location.href = "portal.jsp";
-          }
-          // removeWaitingIcon($("#spinner"));  // Detengo la animaciÃ³n de "Waiting"
-        }, 
-        function (resumenError) {  // FunciÃ³n que se ejecutarÃ¡ si la peticiÃ³n web sale mal
-          showAlertMessage($("#login-container"), ALERT_DANGER, "Error inesperado: ", resumenError); // Muestro una alerta
-          // removeWaitingIcon($("#spinner")); // Detengo la animaciÃ³n de "Waiting"
-        });
-    });
-  });
+	$(document).ready(function() {
+  
+		var loginImages = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"]
+    $("#loginIma").css("background", "url('../img/" + loginImages[Math.floor(Math.random() * loginImages.length)] + "')");
+    $("#loginIma").css("background-position", "center");
+    $("#loginIma").css("background-size", "cover");
+  
+	  // AcciÃ³n a realizar cuando el usuario pulse el botÃ³n "#btnEntrar". Recordar que dicho botÃ³n tiene que incluir el type="button". Si no se pusiera
+	  // ese type el botÃ³n se comportarÃ­a por defecto como type="submit" y enviarÃ­a el formulario, cosa que no es lo que queremos.
+	  $("#btnEntrar").click(function() {
+		
+		// insertWaitingIcon($("#spinner")); // Hago que un componente incorpore el sÃ­mbolo de carga
+		
+		// Construyo un objeto con los datos del formulario introducidos por el usuario
+		var obj = { usuOrEmail: $("#usuOrEmail").val(), 
+					pass: $("#pass").val() };
+  
+		// EnvÃ­o la peticiÃ³n JSON
+		sendJsonRequest("/Login", // URL a la que envÃ­o la peticiÃ³n
+		  JSON.stringify(obj),  // Datos JSON que envÃ­o al Servlet
+		  function (data, status) {  // FunciÃ³n que se ejecutarÃ¡ cuando la peticiÃ³n se realice con Ã©xito
+			if (data == null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
+			  showAlertMessage($("#login-container"), ALERT_DANGER, "Error", "El usuario y/o contrase&ntilde;a introducidos no son v&aacute;lidos");
+			}
+			else { // AutenticaciÃ³n correcta, redirigimos al portal de la aplicaciÃ³n.
+			  window.location.href = "portal.jsp";
+			}
+			// removeWaitingIcon($("#spinner"));  // Detengo la animaciÃ³n de "Waiting"
+		  }, 
+		  function (resumenError) {  // FunciÃ³n que se ejecutarÃ¡ si la peticiÃ³n web sale mal
+			showAlertMessage($("#login-container"), ALERT_DANGER, "Error inesperado: ", resumenError); // Muestro una alerta
+			// removeWaitingIcon($("#spinner")); // Detengo la animaciÃ³n de "Waiting"
+		  });
+	  });
+	});
 
 </script>
 
@@ -51,7 +56,7 @@
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row">
-							<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+							<div class="col-lg-6 d-none d-lg-block" id="loginIma"></div>
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
@@ -91,5 +96,7 @@
 		</div>
 
   </div>
+
+
 </body>
 </html>

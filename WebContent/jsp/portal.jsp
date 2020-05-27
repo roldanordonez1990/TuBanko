@@ -104,7 +104,7 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
+                <h6 class="dropdown-header" style="text-align: center;">
                   Message Center
                 </h6>
                
@@ -114,6 +114,8 @@
               </div>
             </li>
 
+
+            <!--Barrita de separaciÃ³n vertical-->
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
@@ -314,7 +316,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Realmente desea salir?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">ï¿½Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">x</span>
           </button>
