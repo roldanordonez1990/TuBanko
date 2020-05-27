@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,6 +24,8 @@ import model.controladores.UsuarioControlador;
 @WebServlet("/Login")
 public class Login extends SuperTipoServlet {
 	private static final long serialVersionUID = 1L;
+
+	private static final Logger logger = LogManager.getLogger(Login.class);
   
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -51,17 +56,20 @@ public class Login extends SuperTipoServlet {
 			u = UsuarioControlador.getControlador().findByPasswordAndUsernameOrMail(userOrEmail, userOrEmail, password);
 			// Si no encuentro al usuario, informo
 			if (u == null) {
-				System.out.println("No se puede localizar al usuario " + userOrEmail + " con password " + password);
+				logger.info("No se puede localizar al usuario '" + userOrEmail + "' con password '" + password + "'");
 			}
 			// Si encuentro al usuario establezco su imagen a null, porque en este caso no quiero que dicha imagen
 			// viaje en el JSON de salida.
+			else {
+				logger.info("El usuario " + userOrEmail + " ha iniciado sesion");
+			}
 			//else {
 				//u.setImagen(null);
 			//}
 		}
 		catch (Exception ex) {
 			// Ocurri� una excepci�n en el acceso a datos o un error que nos impide acceder a los campos del JSON.
-			ex.printStackTrace();
+			logger.error("Excepci�n al buscar al usuario o email: '" + userOrEmail + "' con password: '" + password, ex + "'");
 		}
 		
 		// Creo el JSON de salida y lo devuelvo al cliente
