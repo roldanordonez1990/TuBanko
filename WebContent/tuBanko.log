@@ -1,1 +1,3 @@
 2020-05-27 19:49:38,619 INFO s.Login [http-nio-8080-exec-2] El usuario rafa@rafa.com ha iniciado sesion
+2020-05-27 20:21:34,990 INFO s.Login [http-nio-8080-exec-17] El usuario rafa@rafa.com ha iniciado sesion
+2020-05-27 20:23:36,893 INFO s.Login [http-nio-8080-exec-24] No se puede localizar al usuario 'dsfsf' con password 'fasdfs'

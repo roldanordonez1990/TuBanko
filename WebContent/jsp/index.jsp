@@ -41,7 +41,7 @@
 
 </script>
 
-<body class="bg-gradient-danger">
+<body class="bg-gradient-success">
 
 	<div class="container">
 

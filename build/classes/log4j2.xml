@@ -6,7 +6,7 @@
       <PatternLayout pattern="[%t] %d{dd/MM/yyyy HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>
     </Console>
 
-    <File name="MyLog" fileName="/Users/pablo/git/TuBanko/WebContent/tuBanko.log">
+    <File name="MyLog" fileName="C:\Users\Francisco Roldán\git\TuBanko\WebContent\tuBanko.log">
       <PatternLayout>
         <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
       </PatternLayout>
