@@ -26,6 +26,8 @@ public class Login extends SuperTipoServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger logger = LogManager.getLogger(Login.class);
+	public static String ID_USER_IN_SESSION = "USR";
+
   
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -61,6 +63,7 @@ public class Login extends SuperTipoServlet {
 			// Si encuentro al usuario establezco su imagen a null, porque en este caso no quiero que dicha imagen
 			// viaje en el JSON de salida.
 			else {
+				request.getSession().setAttribute(ID_USER_IN_SESSION, u);
 				logger.info("El usuario " + userOrEmail + " ha iniciado sesion");
 			}
 			//else {

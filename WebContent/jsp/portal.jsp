@@ -1,5 +1,12 @@
 <%@ include file="cabecera.jsp"%>
 
+<% 
+	if (request.getSession().getAttribute("USR") == null){
+	response.sendRedirect("index.jsp");
+	}
+%>
+
+
 
 <body id="page-top">
 
