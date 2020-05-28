@@ -2,6 +2,7 @@ package servlets;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,6 +49,7 @@ public class Login extends SuperTipoServlet {
 		Usuario u = null;
 		String userOrEmail = null;
 		String password = null;
+		HashMap<String, Object> dto = new HashMap<String, Object>(); // "dto" significa Data Transfer Object
 		try {
 			// Obtengo los datos recibidos en el JSON
 			ObjectMapper mapper = new ObjectMapper();
@@ -64,8 +66,10 @@ public class Login extends SuperTipoServlet {
 			// Si encuentro al usuario establezco su imagen a null, porque en este caso no quiero que dicha imagen
 			// viaje en el JSON de salida.
 			else {
+				request.getSession().setMaxInactiveInterval(40); //tiempo de inactividad en segundos para la sesión
 				request.getSession().setAttribute(ID_USER_IN_SESSION, u);
 				logger.info("El usuario " + userOrEmail + " ha iniciado sesion");
+				dto.put("userName", u.getNombreUsuario()); // Relleno el dto para construir el json de respuesta al servlet
 			}
 			//else {
 				//u.setImagen(null);

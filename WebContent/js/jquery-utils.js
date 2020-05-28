@@ -171,13 +171,14 @@ function getRegularExpressionValidityFromElement(element) {
 function checkInputFormValidity (inputFormElement) {
     // Para poder comprobar la validez de un elemento, este tiene que tener un atributo que indique el tipo de validez
     // que necesita, se admiten varios valores. Estos valores se pueden ver en la función (este mismo fichero) getRegularExpressionValidityFromElement
-    var regularExpression = getRegularExpressionValidityFromElement($(this));
+    var regularExpression = getRegularExpressionValidityFromElement($(inputFormElement));
     if (!regularExpression.test(inputFormElement.val())) { // Compruebo la validación 
         inputFormElement.addClass("is-invalid"); // Incluir esta clase provaca un efecto visual en el elemento del formulario
         return false;
     }
     else {
         inputFormElement.removeClass("is-invalid");
+        inputFormElement.addClass("is-valid");
         return true;
     }
 }
