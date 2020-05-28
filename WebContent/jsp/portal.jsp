@@ -17,7 +17,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="portal.jsp">
@@ -164,11 +164,11 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CUENTA ES11 1111 1111 0000 0001</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">CUENTA ES11 1111 1111 0000 0001</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">42.452,65</div>
                     </div>
                     <div class="col-auto">
@@ -180,11 +180,11 @@
             </div>
             
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CUENTA ES11 1111 1111 0000 0002</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">CUENTA ES11 1111 1111 0000 0002</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">7.698,23</div>
                     </div>
                     <div class="col-auto">
@@ -196,11 +196,11 @@
             </div>
             
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CUENTA ES11 1111 1111 0000 0003</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">CUENTA ES11 1111 1111 0000 0003</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">174.221,95</div>
                     </div>
                     <div class="col-auto">
@@ -221,11 +221,11 @@
 		
 		<div class="row">
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CUENTA ES11 1111 2222 0000 0001</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">CUENTA ES11 1111 2222 0000 0001</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">0,00  - Limite 1.000,00</div>
                     </div>
                     <div class="col-auto">
@@ -237,11 +237,11 @@
             </div>
             
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CUENTA ES11 1111 2222 0000 0002</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">CUENTA ES11 1111 2222 0000 0002</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">654,32  - Limite 3.000,00</div>
                     </div>
                     <div class="col-auto">
@@ -263,11 +263,11 @@
           <div class="row">
 
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Prestamo ES11 1111 3333 0000 0001</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Prestamo ES11 1111 3333 0000 0001</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">42.452,38</div>
                     </div>
                     <div class="col-auto">
@@ -279,11 +279,11 @@
             </div>
             
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CUENTA ES11 1111 3333 0000 0002</div>
+                      <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">CUENTA ES11 1111 3333 0000 0002</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">7.698,42</div>
                     </div>
                     <div class="col-auto">
@@ -306,7 +306,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; TuBanKo 2020</span>
           </div>
         </div>
       </footer>
@@ -324,7 +324,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">�Realmente desea salir?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">x</span>
           </button>

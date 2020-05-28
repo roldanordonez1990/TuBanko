@@ -1,7 +1,7 @@
 <jsp:include page="cabecera.jsp" flush="true">
 	<jsp:param name="tituloDePagina" value="Login" />
 </jsp:include>
-    
+
 <script>
 	$(document).ready(function() {
   
@@ -13,8 +13,9 @@
 	  // AcciÃ³n a realizar cuando el usuario pulse el botÃ³n "#btnEntrar". Recordar que dicho botÃ³n tiene que incluir el type="button". Si no se pusiera
 	  // ese type el botÃ³n se comportarÃ­a por defecto como type="submit" y enviarÃ­a el formulario, cosa que no es lo que queremos.
 	  $("#btnEntrar").click(function() {
-		
-		// insertWaitingIcon($("#spinner")); // Hago que un componente incorpore el sÃ­mbolo de carga
+		  
+		//  insertWaitingIcon($("#spinner"));
+		  		
 		
 		// Construyo un objeto con los datos del formulario introducidos por el usuario
 		var obj = { usuOrEmail: $("#usuOrEmail").val(), 
@@ -30,11 +31,11 @@
 			else { // AutenticaciÃ³n correcta, redirigimos al portal de la aplicaciÃ³n.
 			  window.location.href = "portal.jsp";
 			}
-			// removeWaitingIcon($("#spinner"));  // Detengo la animaciÃ³n de "Waiting"
+			//removeWaitingIcon($("#spinner"));  // Detengo la animaciÃ³n de "Waiting"
 		  }, 
 		  function (resumenError) {  // FunciÃ³n que se ejecutarÃ¡ si la peticiÃ³n web sale mal
 			showAlertMessage($("#login-container"), ALERT_DANGER, "Error inesperado: ", resumenError); // Muestro una alerta
-			// removeWaitingIcon($("#spinner")); // Detengo la animaciÃ³n de "Waiting"
+			//removeWaitingIcon($("#spinner")); // Detengo la animaciÃ³n de "Waiting"
 		  });
 	  });
 	});
