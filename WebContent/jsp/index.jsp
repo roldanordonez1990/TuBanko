@@ -90,8 +90,8 @@
 										<hr>
 									</form>
 									<div class="text-center">
-										<a class="small" href="forgot-password.html">Olvid&eacute;
-											mi contrase&ntilde;a</a>
+										<a class="small" href="forgot-password.html">&iquest;Olvid&eacute;
+											mi contrase&ntilde;a?</a>
 									</div>
 									<div class="text-center">
 										<a class="small" href="register.html">Crea una Cuenta</a>
