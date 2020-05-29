@@ -10,8 +10,13 @@
       <PatternLayout>
         <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
       </PatternLayout>
-    </File>+
+    </File>
     <File name="MyLog" fileName="/Users/pablo/git/TuBanko/WebContent/tuBanko.log">
+      <PatternLayout>
+        <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+      </PatternLayout>
+    </File>
+    <File name="MyLog" fileName="C:\Users\Adrián\git\TuBanko\WebContent">
       <PatternLayout>
         <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
       </PatternLayout>
