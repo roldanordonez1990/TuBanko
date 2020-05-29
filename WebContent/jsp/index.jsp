@@ -20,7 +20,7 @@
 					}
 
 					else{
-						//  insertWaitingIcon($("#spinner"));
+						 insertWaitingIcon($("#spinner"));
 
 						// Construyo un objeto con los datos del formulario introducidos por el usuario
 						var obj = { usuOrEmail: $("#usuOrEmail").val(), 
@@ -36,11 +36,11 @@
 					else { // AutenticaciÃ³n correcta, redirigimos al portal de la aplicaciÃ³n.
 					window.location.href = "portal.jsp";
 					}
-					//removeWaitingIcon($("#spinner"));  // Detengo la animaciÃ³n de "Waiting"
+					removeWaitingIcon($("#spinner"));  // Detengo la animaciÃ³n de "Waiting"
 				}, 
 				function (resumenError) {  // FunciÃ³n que se ejecutarÃ¡ si la peticiÃ³n web sale mal
 					showAlertMessage($("#login-container"), ALERT_DANGER, "Error inesperado: ", resumenError); // Muestro una alerta
-					//removeWaitingIcon($("#spinner")); // Detengo la animaciÃ³n de "Waiting"
+					removeWaitingIcon($("#spinner")); // Detengo la animaciÃ³n de "Waiting"
 				});
 				}
 			});
@@ -85,7 +85,7 @@
 												<div class="invalid-feedback">Debes introducir una contrase&ntilde;a antes de intentar entrar</div> 
 										</div>
 										<button type="button"
-											class="btn btn-primary btn-user btn-block" id="btnEntrar"> Iniciar
+											class="btn btn-primary btn-user btn-block" id="btnEntrar"><span id="spinner"></span> Iniciar
 											Sesi&oacute;n </button> 
 										<hr>
 									</form>

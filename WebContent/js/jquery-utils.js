@@ -45,8 +45,12 @@ function getRequestParameters() {
  * @param {*} successFunction 
  * @param {*} errorFunction 
  */
-function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction) {
+function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction, elementToShowWaitingIcon) {
 //    url = servletsPrefix + url;
+ // Si se ha especificado un elemento en el que mostrar un icono de carga, se hace
+ if (elementToShowWaitingIcon != null) {
+    insertWaitingIcon(elementToShowWaitingIcon);
+}
     $.ajax("/TuBanko" + url, {
         data: jsonSendingData,
         contentType: 'application/json',
@@ -174,11 +178,13 @@ function checkInputFormValidity (inputFormElement) {
     var regularExpression = getRegularExpressionValidityFromElement($(inputFormElement));
     if (!regularExpression.test(inputFormElement.val())) { // Compruebo la validación 
         inputFormElement.addClass("is-invalid"); // Incluir esta clase provaca un efecto visual en el elemento del formulario
+        inputFormElement.removeClass("is-valid"); // si los datos están mal, desaparecerá el mensaje de correcto y se pondrá el incorrecto
         return false;
     }
     else {
-        inputFormElement.removeClass("is-invalid");
+        inputFormElement.removeClass("is-invalid"); // si los datos están bien, desaparecerá el mensaje correcto y aparecerá el correcto
         inputFormElement.addClass("is-valid");
+       
         return true;
     }
 }
@@ -195,4 +201,24 @@ function checkFormValidity (form) {
         }
     });
     return formIsValid;
+}
+
+
+/**
+ * En esta función recibimos un elemento visible de la página y le acoplamos un
+ * spinner, un elemento que tiene una animación para hacer visible al usuario
+ * que estamos, por ejemplo, procesando una petición
+ * @param {*} containerToPutWaitingIcon 
+ */
+function insertWaitingIcon (containerToPutWaitingIcon) {
+    containerToPutWaitingIcon.addClass("spinner-border spinner-border-sm");
+}
+
+/**
+ * En la función anterior agregamos una animación a un elemento, en esta función
+ * eliminamos ese elemento.
+ * @param {*} containerToPutWaitingIcon 
+ */
+function removeWaitingIcon (containerToPutWaitingIcon) {
+    containerToPutWaitingIcon.removeClass("spinner-border spinner-border-sm");
 }
