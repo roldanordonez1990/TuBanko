@@ -16,7 +16,7 @@
         <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
       </PatternLayout>
     </File>
-    <File name="MyLog" fileName="C:\Users\Adrián\git\TuBanko\WebContent">
+    <File name="MyLog" fileName="C:\Users\Adrián\git\TuBanko\WebContent/tuBanko.log">
       <PatternLayout>
         <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
       </PatternLayout>
