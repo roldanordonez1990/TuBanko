@@ -50,7 +50,7 @@ function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction, e
  // Si se ha especificado un elemento en el que mostrar un icono de carga, se hace
  if (elementToShowWaitingIcon != null) {
     insertWaitingIcon(elementToShowWaitingIcon);
-}
+    }
     $.ajax("/TuBanko" + url, {
         data: jsonSendingData,
         contentType: 'application/json',
@@ -58,6 +58,9 @@ function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction, e
         dataType: 'json',
         success: function (data, status) {
             successFunction(data, status);
+            if (elementToShowWaitingIcon != null) {
+                removeWaitingIcon(elementToShowWaitingIcon);
+            }
         },
         error: function (xhr, strError, exception) {
             if (errorFunction != null) {
@@ -73,6 +76,10 @@ function sendJsonRequest(url, jsonSendingData, successFunction, errorFunction, e
 
                 // Envío el error a la función definida por el usuario
                 errorFunction(resumenError);
+            }
+            // si hay un elemento en el que detener la animación de carga, se detiene
+            if (elementToShowWaitingIcon != null) {
+                removeWaitingIcon(elementToShowWaitingIcon);
             }
         }
     });
@@ -151,6 +158,12 @@ $(document).ready(function () {
     $(".checkValidity").blur(function () {
         checkInputFormValidity ($(this)); // Comprobamos la validez del elemento
     })
+     // Lo siguiente es para conseguir que los elementos que tengan clase "bankonterNavBarLink" carguen páginas
+    // en el interior del div "page-content", que es el principal de la página "portal.jsp"
+    $(".bankonterNavBarLink").css("cursor", "pointer");
+    $(".bankonterNavBarLink").click(function() {
+        $("#pageContent").load($(this).attr("toLoadInPageContent"));
+    });
 });
 
 // Expresiones regulares que podremos utilizar en cualquier momento
@@ -221,4 +234,8 @@ function insertWaitingIcon (containerToPutWaitingIcon) {
  */
 function removeWaitingIcon (containerToPutWaitingIcon) {
     containerToPutWaitingIcon.removeClass("spinner-border spinner-border-sm");
+}
+
+function formatNumberToCurrency (anyNumber) {
+    return parseFloat(anyNumber).toLocaleString('en-US', {minimumFractionDigits: 2})
 }

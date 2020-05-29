@@ -1,0 +1,40 @@
+ <!-- Voy a obtener datos del usuario logado y guardado en la sesión de trabajo -->
+ <script>
+	$(document).ready(function() {
+	  // Envío la petición JSON
+	  sendJsonRequest("/GetDatosUsuarioEnSesion", // URL a la que envío la petición
+	  '{"miniatura":true}',  // Datos JSON que envío al Servlet
+	  function (data, status) {  // Función que se ejecutará cuando la petición se realice con éxito
+		if (data != null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
+		  $("#nombreUsuario").html((data.userName != null)? data.userName : "...");
+		  // Si obtengo los datos de la miniatura del usuario, la pongo en pantalla, si no cargo una imagen genérica
+		  if (data.imagen != null && data.imagen.miniatura != null) {
+			$("#miniaturaImagenUsuario").attr("src", "data:image/png;base64," + data.image);
+		  }
+		  else {
+			$("#miniaturaImagenUsuario").attr("src", "../images/homer.png");
+		  }
+		}
+	  }, 
+	  function (resumenError) {  // Función que se ejecutará si la petición web sale mal
+		$("#miniaturaImagenUsuario").attr("src", "../images/homer.png"); // Cargo en pantalla una imagen genérica
+	  },
+	  $("#miniaturaImagenUsuario")); // Elemento en el que deseo introducir una imagen de carga                 
+	});
+  </script>
+  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<span class="mr-2 d-none d-sm-inline text-gray-600 small" id="nombreUsuario"></span>
+	<img class="img-profile rounded-circle" id="miniaturaImagenUsuario">
+  </a>
+  <!-- Dropdown - User Information -->
+  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+	<a class="dropdown-item" href="#">
+	  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+	  Mis datos
+	</a>
+	<div class="dropdown-divider"></div>
+	<a class="dropdown-item" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
+	  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+	  Cerrar sesi&oacute;n
+	</a>
+  </div>
