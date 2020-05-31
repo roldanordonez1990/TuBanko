@@ -1,16 +1,17 @@
 <%@ include file="cabecera.jsp"%>
 
-<% 
-	if (request.getSession().getAttribute("USR") == null){
-	response.sendRedirect("index.jsp");
+<%
+	// Compruebo que la sesiï¿½n tenga un usuario autenticado, en caso contrario redirijo al login.jsp
+	if (request.getSession().getAttribute("USR") == null) {
+		response.sendRedirect("index.jsp");
 	}
 %>
 
 <script>
   $(document).ready(function() {
-    // Realizo la carga de las diferentes partes de la página del portal
+    // Realizo la carga de las diferentes partes de la pÃ¡gina del portal
     $("#datosUsuarioEnSesion").load("infoUsuarioEnPortal.html"); // Cargo la esquina superior izquierda, con los datos del usuario y su foto
-    $("#pageContent").load("situacionGlobal.html"); // Cargo la situación global, un resumen de cuentas, préstamos y tarjetas, de momento estático
+    $("#pageContent").load("situacionGlobal.html"); // Cargo la situaciÃ³n global, un resumen de cuentas, prÃ©stamos y tarjetas, de momento estÃ¡tico
 })
 
 </script>
@@ -18,8 +19,6 @@
 
 <body id="page-top">
 
-
-  
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -31,35 +30,30 @@
         <img src="../res/TuBanKo.png" alt="logo" style="width:80%">
       </a>
 
-
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider my-0">
+
       <!-- Heading -->
       <div class="sidebar-heading">
         Tus enlaces
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="portal.jsp" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Situacion Global</span>
-        </a>
-        
+        <a class="nav-link" href="portal.jsp">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Situaci&oacute;n global</span></a>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
+      <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Transferencias</span>
-        </a>
-      </li>
+        <a class="nav-link" href="portal.jsp">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Transferencias</span></a>
+      </li>  
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      
+      <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -83,33 +77,10 @@
             <i class="fa fa-bars"></i>
           </button>
 
-         
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-success" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
  
-
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -119,22 +90,17 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header" style="text-align: center;">
-                  Message Center
+                <h6 class="dropdown-header">
+                  Mensajer&iacute;a
                 </h6>
-               
-              
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">No hay mensajes nuevos</a>
               </div>
             </li>
 
-
-            <!--Barrita de separación vertical-->
-            <div class="topbar-divider d-none d-sm-block" id="datosUsuarioEnSesion"></div>
+            <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
+            <li class="nav-item dropdown no-arrow" id="datosUsuarioEnSesion">
             </li>
 
           </ul>
@@ -154,7 +120,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; TuBanKo 2020</span>
+            <span>Copyright &copy; Bankonter 2020</span>
           </div>
         </div>
       </footer>
@@ -164,7 +130,9 @@
     <!-- End of Content Wrapper -->
 
   </div>
+  <!-- End of Page Wrapper -->  
 
+  <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
@@ -176,21 +144,22 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">&iquest;Realmente desea salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">x</span>
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesion.</div>
+        <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesi&oacute;n</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Quedarme</button>
-          <a class="btn btn-primary" href="index.jsp">Deseo salir</a>
+          <a class="btn btn-primary" href="login.jsp">Deseo salir</a>
         </div>
       </div>
     </div>
   </div>
 
-  
+
   <script src="../js/sb-admin-2.js"></script>
+ 
 
-  
+</body>
 
-<%@ include file="pie.jsp"%>
+</html>
