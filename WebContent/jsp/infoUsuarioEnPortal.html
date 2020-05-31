@@ -12,12 +12,12 @@
 			$("#miniaturaImagenUsuario").attr("src", "data:image/png;base64," + data.image);
 		  }
 		  else {
-			$("#miniaturaImagenUsuario").attr("src", "../images/homer.png");
+			$("#miniaturaImagenUsuario").attr("src", "../images/mariposa.png");
 		  }
 		}
 	  }, 
 	  function (resumenError) {  // Función que se ejecutará si la petición web sale mal
-		$("#miniaturaImagenUsuario").attr("src", "../images/homer.png"); // Cargo en pantalla una imagen genérica
+		$("#miniaturaImagenUsuario").attr("src", "../images/mariposa.png"); // Cargo en pantalla una imagen genérica
 	  },
 	  $("#miniaturaImagenUsuario")); // Elemento en el que deseo introducir una imagen de carga                 
 	});
