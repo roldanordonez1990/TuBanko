@@ -31,10 +31,10 @@
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-2">
 
       <!-- Heading -->
-      <div class="sidebar-heading">
+      <div class="sidebar-heading" style="text-align: center;">
         Tus enlaces
       </div>
 
@@ -150,7 +150,7 @@
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesi&oacute;n</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Quedarme</button>
-          <a class="btn btn-primary" href="login.jsp">Deseo salir</a>
+          <a class="btn btn-primary" href="index.jsp">Deseo salir</a>
         </div>
       </div>
     </div>
