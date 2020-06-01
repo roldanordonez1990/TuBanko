@@ -2,9 +2,9 @@
 
 <%
 	// Compruebo que la sesiï¿½n tenga un usuario autenticado, en caso contrario redirijo al login.jsp
-	if (request.getSession().getAttribute("USR") == null) {
-		response.sendRedirect("index.jsp");
-	}
+	//if (request.getSession().getAttribute("USR") == null) {
+	//	response.sendRedirect("index.jsp");
+	//}
 %>
 
 <script>
