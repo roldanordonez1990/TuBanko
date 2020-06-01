@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Utils.SuperTipoServlet;
+import model.Imagen;
 import model.Usuario;
 
 
@@ -48,6 +49,7 @@ public class GetDatosUsuarioEnSesion extends SuperTipoServlet {
 		
 		// Obtengo el usuario guardado en la sesión
 		Usuario u = null;
+		Imagen i = null;
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, Object> dto = new HashMap<String, Object>(); // "dto" significa Data Transfer Object
 		

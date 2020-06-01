@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Utils.SuperTipoServlet;
+import model.Imagen;
 import model.Usuario;
 import model.controladores.UsuarioControlador;
 
@@ -70,6 +71,7 @@ public class Login extends SuperTipoServlet {
 				request.getSession().setAttribute(ID_USER_IN_SESSION, u);
 				logger.info("El usuario " + userOrEmail + " ha iniciado sesion");
 				dto.put("userName", u.getNombreUsuario()); // Relleno el dto para construir el json de respuesta al servlet
+				
 			}
 			//else {
 				//u.setImagen(null);
@@ -82,7 +84,7 @@ public class Login extends SuperTipoServlet {
 		
 		// Creo el JSON de salida y lo devuelvo al cliente
 		ObjectMapper mapper = new ObjectMapper();
-		response.getWriter().println(mapper.writeValueAsString(u));
+		response.getWriter().println(mapper.writeValueAsString(dto));
 	}
 
 }

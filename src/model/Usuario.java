@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -22,6 +23,10 @@ public class Usuario extends Entidad implements Serializable {
 	private String nombreUsuario;
 
 	private String password;
+
+	//bi-directional many-to-one association to Contrato
+	@OneToMany(mappedBy="usuario")
+	private List<Contrato> contratos;
 
 	//bi-directional many-to-one association to Imagen
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -61,6 +66,28 @@ public class Usuario extends Entidad implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Contrato> getContratos() {
+		return this.contratos;
+	}
+
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
+	}
+
+	public Contrato addContrato(Contrato contrato) {
+		getContratos().add(contrato);
+		contrato.setUsuario(this);
+
+		return contrato;
+	}
+
+	public Contrato removeContrato(Contrato contrato) {
+		getContratos().remove(contrato);
+		contrato.setUsuario(null);
+
+		return contrato;
 	}
 
 	public Imagen getImagen() {
