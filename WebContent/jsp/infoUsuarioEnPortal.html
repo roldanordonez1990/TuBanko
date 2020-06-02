@@ -8,7 +8,7 @@
                     if (data != null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
                       $("#nombreUsuario").html((data.userName != null)? data.userName : ".....");
                       // Si obtengo los datos de la miniatura del usuario, la pongo en pantalla, si no cargo una imagen genÃ©rica
-                      if (data.imagen != null && data.imagen.miniatura != null) {
+                      if (data.image != null) {
                         $("#miniaturaImagenUsuario").attr("src", "data:image/png;base64," + data.image);
                         console.log("imagen de rafa");
                       }

@@ -57,10 +57,13 @@ public class GetDatosUsuarioEnSesion extends SuperTipoServlet {
 			// Obtengo los datos recibidos en el JSON
 			JsonNode rootNode = mapper.readTree(request.getInputStream());
 			boolean miniatura = false; // Comienzo pensando que no me están pidiendo la miniatura
+			boolean contenido = false;
 			
 			try {
 				// Intento obtener el valor de si el json incorpora o no el valor del campo "miniatura".
 				miniatura = Boolean.parseBoolean(rootNode.path("miniatura").asText());
+				contenido = Boolean.parseBoolean(rootNode.path("contenido").asText());
+				
 			}
 			catch (Exception ex) {
 				// Si ocurre una excepción no importa, no se enviará la miniatura
@@ -73,6 +76,7 @@ public class GetDatosUsuarioEnSesion extends SuperTipoServlet {
 			if (u != null) { // Si existe un usuario guardado en la sesión, obtengo sus datos
 				dto.put("userName", u.getNombreUsuario()); // Relleno el dto para construir el json de respuesta al servlet
 				dto.put("image", (miniatura)? u.getImagen().getMiniatura() : u.getImagen().getContenido());
+				//dto.put("image", u.getImagen().getContenido());
 			} 
 		}
 		catch (Exception ex) {

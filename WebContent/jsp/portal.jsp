@@ -1,10 +1,10 @@
 <%@ include file="cabecera.jsp"%>
 
 <%
-	// Compruebo que la sesiï¿½n tenga un usuario autenticado, en caso contrario redirijo al login.jsp
-	//if (request.getSession().getAttribute("USR") == null) {
-	//	response.sendRedirect("index.jsp");
-	//}
+	  //Compruebo que la sesiï¿½n tenga un usuario autenticado, en caso contrario redirijo al index.jsp
+	  if (request.getSession().getAttribute("USR") == null) {
+		response.sendRedirect("index.jsp");
+	}
 %>
 
 <script>
@@ -90,7 +90,7 @@
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
+                <h6 class="dropdown-header bg-gradient-success">
                   Mensajer&iacute;a
                 </h6>
                 <a class="dropdown-item text-center small text-gray-500" href="#">No hay mensajes nuevos</a>
@@ -150,7 +150,7 @@
         <div class="modal-body">Selecciona "Deseo salir" si realmente quieres abandonar la sesi&oacute;n</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Quedarme</button>
-          <a class="btn btn-primary" href="index.jsp">Deseo salir</a>
+          <a class="btn btn-success" href="index.jsp">Deseo salir</a>
         </div>
       </div>
     </div>
