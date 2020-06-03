@@ -34,7 +34,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Heading -->
-      <div class="sidebar-heading" style="text-align: center;">
+      <div class="sidebar-heading my-1" style="text-align: center;">
         Tus enlaces
       </div>
 
@@ -59,7 +59,7 @@
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <button class="rounded-circle border-2" id="sidebarToggle"></button>
       </div>
 
     </ul>
