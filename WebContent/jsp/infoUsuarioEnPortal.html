@@ -10,11 +10,11 @@
                       // Si obtengo los datos de la miniatura del usuario, la pongo en pantalla, si no cargo una imagen genÃ©rica
                       if (data.image != null) {
                         $("#miniaturaImagenUsuario").attr("src", "data:image/png;base64," + data.image);
-                        console.log("imagen de rafa");
+                        console.log("imagen bbdd");
                       }
                       else {
                         $("#miniaturaImagenUsuario").attr("src", "../images/10.jpg");
-                        console.log("imagen de cerdo");
+                        console.log("imagen por defecto");
 
                       }
                     }
@@ -41,3 +41,6 @@
                   Cerrar sesi&oacute;n
                 </a>
               </div>
+<script>
+  reInit();
+</script>

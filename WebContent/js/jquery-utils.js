@@ -1,7 +1,12 @@
-
-
 // Siempre que la página esté completamente cargada se aplica lo siguiente
 $(document).ready(function () {
+    reInit();
+});
+
+
+// He sacado esta función fuera de $(document).ready() para poder volver a iniciar la página en cualquier
+// momento, dado que hago cargas parciales de código html dentro de la página del portal.
+function reInit () {
     /**
      * Cuando la página esté completamente cargada le asignamos las propiedades al div que actúa
      * como ventana modal de carga
@@ -12,8 +17,20 @@ $(document).ready(function () {
         show: false  // Por defecto aparece oculto en la página
     })
     
+    // Todos los elmentos de un formulario que incorporen la clase "checkValidity" tendrán el comportamiento
+    // de comprobar su validez cuando pierdan el foco.
+    // Usado para comprobar la validez de un input que tenga la clase "checkValidity"
+    $(".checkValidity:input").blur(function () {
+        checkInputFormValidity ($(this)); // Comprobamos la validez del elemento
+    })
 
-});
+    // Lo siguiente es para conseguir que los elementos que tengan clase "bankonterNavBarLink" carguen páginas
+    // en el interior del div "page-content", que es el principal de la página "portal.jsp"
+    $(".bankonterNavBarLink").css("cursor", "pointer");
+    $(".bankonterNavBarLink").click(function() {
+        $("#pageContent").load($(this).attr("toLoadInPageContent"));
+    });
+}
 
 
 /**
@@ -154,17 +171,6 @@ function getDataFromFileInput(fileInput, onFileLoadedFunction) {
    }
 }
 
-$(document).ready(function () {
-    $(".checkValidity").blur(function () {
-        checkInputFormValidity ($(this)); // Comprobamos la validez del elemento
-    })
-     // Lo siguiente es para conseguir que los elementos que tengan clase "bankonterNavBarLink" carguen páginas
-    // en el interior del div "page-content", que es el principal de la página "portal.jsp"
-    $(".bankonterNavBarLink").css("cursor", "pointer");
-    $(".bankonterNavBarLink").click(function() {
-        $("#pageContent").load($(this).attr("toLoadInPageContent"));
-    });
-});
 
 // Expresiones regulares que podremos utilizar en cualquier momento
 const EMAIL_REGULAR_EXPRESION = /\S+@\S+\.\S+/; // Expresión regular para un email -  validity="email"

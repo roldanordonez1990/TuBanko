@@ -1,152 +1,106 @@
-          <!-- TÃ­tulo de cuentas corrientes -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Cuentas Corrientes - 224.372,83 &euro;</h1>
-          </div>
+<script>
+ $(document).ready(function(){ //enviamos la peticion JSON a la url y los datos que enviamos al servlet
+	 sendJsonRequest("/GetSituacionGlobal",
+	 '',
+	 function (data,status){ //creamos esta funcion cuando el servlet nos devuelva con éxito la peticion 
+		 //si es nulo no ha encontrado al usuario. En caso contrario pasamos por todos los distintos tipos de cuentas
+		 //creando tarjetas de bootstrap y sumando el total de cada tipo.
+		 //CUENTAS CORRIENTES
+		  // Función que se ejecutará cuando la petición se realice con éxito
+      	if (data != null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
+        // Paso por cada una de las cuentas corrientes, creando su bootstrap card y calculando el total de la suma de sus saldos
+        var totalCuentasCorrientes = 0;  // Para calcular el saldo sumado de todas las cuentas
+        var divCuentasCorrientes = $("#divCuentasCorrientes");
+        divCuentasCorrientes.html(""); // Formateo el hueco de las cuentas corrientes
+        $.each(data.accounts, function (i, item)  {
+          totalCuentasCorrientes += item.saldo; // Calculo el saldo total sumado de todas las cuentas   
+          // Incorporo al div correspondiente una bootstrap card por cada item       
+          divCuentasCorrientes.append(createBootstrapCardFromItem(item, "border-left-primary", formatNumberToCurrency(item.saldo) + " &euro;", "fas fa-money-check-alt"));         
+        });
+        // Una vez calculado el total de las cuentas corrientes, se muestra
+        $("#spanTotalCuentasCorrientes").html(formatNumberToCurrency(totalCuentasCorrientes));
+		     
+		     //TARJETAS DE DEBITO
+		     var totalTarjetas = 0;  
+		     var divTarjetas = $("#divTarjetas");
+		     divTarjetas.html(""); 
+		     $.each(data.debitCards, function (i, item)  {
+		        totalTarjetas += item.saldo;  
+		        divTarjetas.append(createBootstrapCardFromItem(item, "border-left-warning", formatNumberToCurrency(item.saldo) + " &euro;  - L&iacute;mite "+ formatNumberToCurrency(item.limite) + " &euro;", "fab fa-cc-visa "));         
+		     });
+		     
+		     //son dos tipos de tarjetas pero ambos perteneces al tipo tarjetas y no tenenmos que crear otra 
+		     //variable para estas tarjetas y asi podemos ver el total de las tarjetas.
+		     
+		     //TARJETAS DE CREDITO
+		     $.each(data.creditCards, function (i, item)  {
+		          totalTarjetas += item.saldo; 
+		          divTarjetas.append(createBootstrapCardFromItem(item, "border-left-warning", formatNumberToCurrency(item.saldo) + " &euro; " , "fab fa-cc-amex "));         
+	        });
+	        $("#spanTotalTarjetasCredito").html(formatNumberToCurrency(totalTarjetas));
+		    console.log("hola");
+		    //PRESTAMOS
+	        var totalPrestamos = 0; 
+	        var divPrestamos = $("#divPrestamos");
+	        divPrestamos.html(""); 
+	        $.each(data.loans, function (i, item)  {
+	          totalPrestamos += item.saldo;  
+	          divPrestamos.append(createBootstrapCardFromItem(item, "border-left-danger", formatNumberToCurrency(item.saldo) + " &euro;", "far fa-angry "));         
+	        });
+	        $("#spanTotalPrestamos").html(formatNumberToCurrency(totalPrestamos));
+		 }
+	 },
+	 function (resumenError) { //si sale mal la petición se ejecuta esto	 
+	 },
+	 $("#divCuentasCorrientes")); //elemento en el que se introduce imagen de carga
+  });
+ 
+ //ESTA FUNCION CREA LOS CARD EN BOOTSTRAP
+ function createBootstrapCardFromItem (item, borderClass, balanceString, icon){
+	    return "<div class='col-xl-4 col-md-6 mb-4'> " +
+        "<div class='card " + borderClass + " shadow h-100 py-2'>" +
+          "<div class='card-body'>" +
+            "<div class='row no-gutters align-items-center'>" +
+              "<div class='col mr-2'>" +
+                "<div class='text-xs font-weight-bold text-dark text-uppercase mb-1'>Cuenta " + item.descriptor + "</div>" +
+                "<div class='h5 mb-0 font-weight-bold text-gray-800'>" + balanceString + "</div>" +
+              "</div>" +
+              "<div class='col-auto'>" +
+                "<i class='" + icon + " fa-2x text-gray-300'></i>" +
+              "</div>" +
+            "</div>" +
+          "</div>" + 
+        "</div>" +
+      "</div>"
+}
 
-          <!-- Content Row -->
-          <div class="row">
+</script>         
 
-            <!-- Cuentas corrientes -->
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cuenta ES11 1111 1111 0000 0001</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">42.452,65 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<!-- Título de cuentas corrientes -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Cuentas Corrientes - <span id="spanTotalCuentasCorrientes"></span> &euro;</h1>
+</div>
+<!-- Content Row -->
+<div class="row" id="divCuentasCorrientes">
+</div>
 
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cuenta ES11 1111 1111 0000 0002</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">7.698,23 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<!-- Tarjetas de crédito y de débito -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Tarjetas - <span id="spanTotalTarjetasCredito"></span> &euro;</h1>
+</div>
 
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cuenta ES11 1111 1111 0000 0003</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">174.221,95 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<!-- Content Row -->
+<div class="row"  id="divTarjetas">
+</div>
 
-          </div>
+<!-- Título de préstamos -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Pr&eacute;stamos - <span id="spanTotalPrestamos"></span> &euro;</h1>
+</div> 
+
+<!-- Content Row -->
+<div class="row" id="divPrestamos">
+</div>
 
 
-          <!-- Tarjetas de crÃ©dito -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Tarjetas - 654,32 &euro;</h1>
-          </div>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Tarjetas de crÃ©dito y dÃ©bito -->
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">D&eacute;bito ES11 1111 2222 0000 0001</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">0,00 &euro; - L&iacute;mite 1.000,00 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fab fa-cc-visa fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cr&eacute;dito ES11 1111 2222 0000 0002</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">654,32 &euro; - L&iacute;mite 3.000,00 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fab fa-cc-amex fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
   
-
-          </div>
-
-
-
-
-          <!-- TÃ­tulo de prÃ©stamos -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Pr&eacute;stamos - 50.150,80 &euro;</h1>
-          </div> 
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- PrÃ©stamos -->
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pr&eacute;stamo ES11 1111 3333 0000 0001</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">42.452,38 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="far fa-angry fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cuenta ES11 1111 3333 0000 0002</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">7.698,42 &euro;</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="far fa-angry fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> 
-
-          </div>
-
-
-

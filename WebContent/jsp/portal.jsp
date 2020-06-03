@@ -23,7 +23,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" >
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="portal.jsp">
@@ -31,7 +31,7 @@
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-2">
+      <hr class="sidebar-divider my-0">
 
       <!-- Heading -->
       <div class="sidebar-heading" style="text-align: center;">
@@ -39,17 +39,19 @@
       </div>
 
       <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="portal.jsp">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Situaci&oacute;n global</span></a>
+      <li class="nav-item">	
+      	<span role="button" class="nav-link bankonterNavBarLink" toLoadInPageContent="situacionGlobal.html">
+      		<i class="fas fa-fw fa-chart-area"></i>
+        	<span>Situaci&oacute;n global</span>
+        </span>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="portal.jsp">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Transferencias</span></a>
+      <li class="nav-item">	
+      	<span role="button" class="nav-link bankonterNavBarLink" toLoadInPageContent="transferencia.html">
+      		<i class="fas fa-fw fa-chart-area"></i>
+        	<span>Transferencias</span>
+        </span>
       </li>  
 
       <!-- Divider -->
@@ -120,7 +122,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Bankonter 2020</span>
+            <span>Copyright &copy; TuBanko 2020</span>
           </div>
         </div>
       </footer>
