@@ -15,8 +15,13 @@ public class Usuario extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+
+	private String apellido;
+
+	private String direccion;
+
+	private String dni;
 
 	private String email;
 
@@ -24,12 +29,19 @@ public class Usuario extends Entidad implements Serializable {
 
 	private String password;
 
+	private int telefono;
+
 	//bi-directional many-to-one association to Contrato
 	@OneToMany(mappedBy="usuario")
 	private List<Contrato> contratos;
 
+	//bi-directional many-to-one association to Tipologiasexo
+	@ManyToOne
+	@JoinColumn(name="idTipologia")
+	private Tipologiasexo tipologiasexo;
+
 	//bi-directional many-to-one association to Imagen
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="idImagen")
 	private Imagen imagen;
 
@@ -42,6 +54,30 @@ public class Usuario extends Entidad implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getApellido() {
+		return this.apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getDireccion() {
+		return this.direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getDni() {
+		return this.dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getEmail() {
@@ -68,6 +104,14 @@ public class Usuario extends Entidad implements Serializable {
 		this.password = password;
 	}
 
+	public int getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
 	public List<Contrato> getContratos() {
 		return this.contratos;
 	}
@@ -88,6 +132,14 @@ public class Usuario extends Entidad implements Serializable {
 		contrato.setUsuario(null);
 
 		return contrato;
+	}
+
+	public Tipologiasexo getTipologiasexo() {
+		return this.tipologiasexo;
+	}
+
+	public void setTipologiasexo(Tipologiasexo tipologiasexo) {
+		this.tipologiasexo = tipologiasexo;
 	}
 
 	public Imagen getImagen() {

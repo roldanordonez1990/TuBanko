@@ -6,6 +6,7 @@
 		<class>model.Imagen</class>
 		<class>model.Contrato</class>
 		<class>model.Tipocontrato</class>
+		<class>model.Tipologiasexo</class>
 		<properties>
            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/bankonter?serverTimezone=Europe/Madrid"/>

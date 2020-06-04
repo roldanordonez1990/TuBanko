@@ -14,7 +14,6 @@ public class Contrato extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	private String descriptor;
@@ -24,12 +23,12 @@ public class Contrato extends Entidad implements Serializable {
 	private float saldo;
 
 	//bi-directional many-to-one association to Tipocontrato
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="idTipoContrato")
 	private Tipocontrato tipocontrato;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 

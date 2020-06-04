@@ -6,28 +6,24 @@ import java.util.List;
 
 
 /**
- * The persistent class for the imagen database table.
+ * The persistent class for the tipologiasexo database table.
  * 
  */
 @Entity
-@NamedQuery(name="Imagen.findAll", query="SELECT i FROM Imagen i")
-public class Imagen extends Entidad implements Serializable {
+@NamedQuery(name="Tipologiasexo.findAll", query="SELECT t FROM Tipologiasexo t")
+public class Tipologiasexo extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	@Lob
-	private byte[] contenido;
-
-	@Lob
-	private byte[] miniatura;
+	private String descripcion;
 
 	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="imagen")
+	@OneToMany(mappedBy="tipologiasexo")
 	private List<Usuario> usuarios;
 
-	public Imagen() {
+	public Tipologiasexo() {
 	}
 
 	public int getId() {
@@ -38,20 +34,12 @@ public class Imagen extends Entidad implements Serializable {
 		this.id = id;
 	}
 
-	public byte[] getContenido() {
-		return this.contenido;
+	public String getDescripcion() {
+		return this.descripcion;
 	}
 
-	public void setContenido(byte[] contenido) {
-		this.contenido = contenido;
-	}
-
-	public byte[] getMiniatura() {
-		return this.miniatura;
-	}
-
-	public void setMiniatura(byte[] miniatura) {
-		this.miniatura = miniatura;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -64,14 +52,14 @@ public class Imagen extends Entidad implements Serializable {
 
 	public Usuario addUsuario(Usuario usuario) {
 		getUsuarios().add(usuario);
-		usuario.setImagen(this);
+		usuario.setTipologiasexo(this);
 
 		return usuario;
 	}
 
 	public Usuario removeUsuario(Usuario usuario) {
 		getUsuarios().remove(usuario);
-		usuario.setImagen(null);
+		usuario.setTipologiasexo(null);
 
 		return usuario;
 	}
