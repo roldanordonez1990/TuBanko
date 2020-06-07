@@ -1,0 +1,171 @@
+<script>
+	$(document).ready(function () {
+
+		// Realizo una carga de todas las tipologï¿½as de sexo que tiene que marcar el desplegable
+		sendJsonRequest("/ListadoTipologiaSexo",
+			"", 
+			function (data, status) {
+				$.each(data, function (i, item) {
+					$("#idTipologia").append("<option value=" + item.id + ">" + item.descripcion + "</option>");
+				})
+			}, null
+		);
+
+		// Obtengo los parï¿½metros que entran al request
+		requestParameters = getRequestParameters();
+		// Si he recibido un parï¿½metro llamado "id" hago una llamada al servidor para obtener
+		// los datos del profesor cuyo id coincida.
+		if (requestParameters["id"] != null) {
+			id = requestParameters["id"];
+
+			sendJsonRequest("/GetFichaUsuario2",
+				'{"id": ' + id + '}',
+				function (data, status) {
+					muestraRegistroEnPantalla(data);
+				}, null);
+		}
+
+
+		/**
+		 * Cuando se pulsa el botï¿½n de guardar
+		 */
+		$("#btn-guardar").click(function () {
+			// Existe un input de tipo file, eso quiere decir que para obtener el contenido
+			// del fichero debemos esperar a que este se cargue completamente.
+			getDataFromFileInput($("#ficheroImagen"),
+				function (fileData) {
+
+					alert(getJsonRegistroMostrado(fileData));
+
+					sendJsonRequest("/GetFichaUsuario2",
+						getJsonRegistroMostrado(fileData),
+						function (data, status) {
+							muestraRegistroEnPantalla(data);
+							showAlertMessage(ALERT_INFO, "Ok", "Registro guardado");
+						}, null);
+				});
+		});
+
+
+		/**
+		 * Mostrar en pantalla los datos del profesor recibidos del servidor
+		 */
+		function muestraRegistroEnPantalla(data) {
+			$("#imagen").attr("src", "data:image/png;base64," + data.imagen);
+			$("#id").val(data.id);
+			$("#nombreUsuario").val(data.nombreUsuario);
+			$("#apellido").val(data.apellido);
+			$("#idTipologia option[value=" + data.idTipologia + "]").attr("selected", "selected");
+			$("#dni").val(data.dni);
+			$("#direccion").val(data.direccion);
+			$("#email").val(data.email);
+			$("#telefono").val(data.telefono);
+
+		}
+
+		/*
+		* Obtener los datos mostrados en la pï¿½gina para el profesor, convertidos en JSON
+		*/
+		function getJsonRegistroMostrado(fileData) {
+			var jsonData = '{"id": "' + $("#id").val() +
+				'", "accion": "almacenar",' +
+				' "nombreUsuario": "' + $("#nombreUsuario").val() +
+				'", "apellido": "' + $("#apellido").val() +
+				'", "idTipologia": "' + $("#idTipologia").val() +
+				'", "dni": "' + $("#dni").val() +
+				'", "direccion": "' + $("#direccion").val() +
+				'", "email": "' + $("#email").val() +
+				'", "telefono": "' + $("#telefono").val() + '"';
+			if (fileData != null) {
+				jsonData += ', "imagen": "' + fileData + '"';
+			}
+			jsonData += '}';
+
+			return jsonData;
+		}
+		
+		
+	});  
+</script>
+
+<style type="text/css">
+</style>
+
+
+<div class="row">
+	<div class="mx-auto col-sm-6">
+		<!-- form user info -->
+		<div class="card">
+			<div class="card-header">
+				<h4 class="mb-0">Ficha del Usuario</h4>
+			</div>
+			<div class="card-body">
+
+				
+				<form id="form1" name="form1" method="post" enctype="multipart/form-data" class="form" role="form"
+					autocomplete="off">
+					<p />
+					<img id="imagen" class="mx-auto d-block rounded-circle" width='100px' height='100px' />
+					<p />
+					<input type="hidden" id="id" />
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="ficheroImagen">Imagen:</label>
+						<div class="col-lg-9">
+							<input name="ficheroImagen" class="form-control-file" type="file" id="ficheroImagen" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="nombre">Nombre:</label>
+						<div class="col-lg-9">
+							<input id="nombreUsuario" class="form-control" type="text" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="primerApellido">
+							Apellido:</label>
+						<div class="col-lg-9">
+							<input id="apellido" class="form-control" type="text" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="idTipologiaSexo">Sexo:</label>
+						<div class="col-lg-9">
+							<select id="idTipologia" class="form-control">
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="dni">DNI:</label>
+						<div class="col-lg-9">
+							<input id="dni" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="direccion">Direcci&oacute;n:</label>
+						<div class="col-lg-9">
+							<input id="direccion" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="email">Email:</label>
+						<div class="col-lg-9">
+							<input id="email" type="text" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="telefono">Tel&eacute;fono:</label>
+						<div class="col-lg-9">
+							<input id="telefono" type="text" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-lg-9">
+							<span class='btn btn-primary fa fa-save' title='Guardar' id="btn-guardar">
+								Guardar</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

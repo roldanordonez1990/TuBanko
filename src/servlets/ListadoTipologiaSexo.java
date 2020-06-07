@@ -12,20 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import Utils.SuperTipoServlet;
 import model.Tipologiasexo;
 import model.controladores.TipologiaSexoControlador;
 
 /**
- * Servlet implementation class listadoTipologiaSexo
+ * Servlet implementation class ListadoTipologiaSexo
  */
-@WebServlet("/listadoTipologiaSexo")
-public class listadoTipologiaSexo extends HttpServlet {
+@WebServlet("/ListadoTipologiaSexo")
+public class ListadoTipologiaSexo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public listadoTipologiaSexo() {
+    public ListadoTipologiaSexo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,21 +36,20 @@ public class listadoTipologiaSexo extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json;charset=UTF-8");		
 
-		List<Tipologiasexo> elements = TipologiaSexoControlador.getControlador().findAllTipologiasSexo();
+		List<Tipologiasexo> entities = TipologiaSexoControlador.getControlador().findAllTipologiasSexo();
 
 		
 		ObjectMapper mapper = new ObjectMapper();
-		out.println(mapper.writeValueAsString(elements));
+		out.println(mapper.writeValueAsString(entities));
 		
 		out.close();
 
 	}
-
+	
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

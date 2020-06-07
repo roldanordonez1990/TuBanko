@@ -1,3 +1,5 @@
+      
+              
               <!-- Voy a obtener datos del usuario logado y guardado en la sesiÃ³n de trabajo -->
               <script>
                 $(document).ready(function() {
@@ -24,14 +26,16 @@
                   },
                   $("#miniaturaImagenUsuario")); // Elemento en el que deseo introducir una imagen de carga                 
                 });
+            
               </script>
+           
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-sm-inline text-gray-600 small" id="nombreUsuario"></span>
                 <img class="img-profile rounded-circle" id="miniaturaImagenUsuario">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item bankonterNavBarLink infoFicha" toLoadInPageContent="fichaUsuario.html">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Mis datos
                 </a>
@@ -43,4 +47,12 @@
               </div>
 <script>
   reInit();
+</script>
+
+<script>
+  $(".infoFicha").click(function () {
+					var id = $(this).attr(data.id);
+					var url = "fichaUsuario.html?id=" + encodeURIComponent(id);
+					window.location.search = url;
+				});
 </script>

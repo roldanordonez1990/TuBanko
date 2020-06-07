@@ -10,12 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="jpt.jpa"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="librerias/commons-fileupload-1.4.jar"/>
 	<classpathentry kind="lib" path="librerias/commons-io-2.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/com.sun.tools.xjc_2.2.0.jar"/>
@@ -24,7 +18,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.9.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.9.5.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.9.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.activation_1.1.0.v201108011116.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.mail_1.4.0.v201005080615.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.persistence_2.1.0.v201304241213.jar"/>
@@ -36,5 +29,12 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2-api-2.12.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-api-2.12.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-core-2.12.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.9.5.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="jpt.jpa"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
