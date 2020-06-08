@@ -68,16 +68,15 @@
 		*/
 		function getJsonRegistroMostrado(fileData) {
 			var jsonData = '{"id": "' + $("#id").val() +
-				'", "accion": "almacenar",' +
-				' "nombreUsuario": "' + $("#nombreUsuario").val() +
+				' "userName": "' + $("#nombreUsuario").val() +
 				'", "apellido": "' + $("#apellido").val() +
-				'", "idTipologia": "' + $("#idTipologia").val() +
+				//'", "idTipologia": "' + $("#idTipologia").val() +
 				'", "dni": "' + $("#dni").val() +
 				'", "direccion": "' + $("#direccion").val() +
 				'", "email": "' + $("#email").val() +
 				'", "telefono": "' + $("#telefono").val() + '"';
 			if (fileData != null) {
-				jsonData += ', "imagen": "' + fileData + '"';
+				jsonData += ', "image": "' + fileData + '"';
 			}
 			jsonData += '}';
 

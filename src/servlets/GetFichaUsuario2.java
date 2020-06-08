@@ -1,16 +1,13 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.geronimo.mail.util.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,15 +15,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Utils.SuperTipoServlet;
-import model.Contrato;
 import model.Imagen;
-import model.Tipocontrato;
-import model.Tipologiasexo;
 import model.Usuario;
-import model.controladores.TipoContratoControlador;
-import model.controladores.TipologiaSexoControlador;
-import model.controladores.UsuarioControlador;
-
 
 /**
  * Comprueba que exista un usuario en la sesión de trabajo, una vez que lo obtiene devolverá la información
@@ -50,57 +40,55 @@ public class GetFichaUsuario2 extends SuperTipoServlet {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		// Obtengo el usuario guardado en la sesión
+		Usuario u = null;
+		Imagen i = null;
+		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, Object> dto = new HashMap<String, Object>(); // "dto" significa Data Transfer Object
+		
 		try {
-			
-			boolean miniatura = false;
-			ObjectMapper mapper = new ObjectMapper();
+			// Obtengo los datos recibidos en el JSON
 			JsonNode rootNode = mapper.readTree(request.getInputStream());
-			int id = rootNode.path("id").asInt();
-			miniatura = Boolean.parseBoolean(rootNode.path("miniatura").asText());
-			//u = (Usuario) request.getSession().getAttribute(Login.ID_USER_IN_SESSION);
-			Usuario u = new Usuario();
+			boolean miniatura = false; // Comienzo pensando que no me están pidiendo la miniatura
+			boolean contenido = false;
 			
-			
-			if (u != null) {
-				u = (Usuario) UsuarioControlador.getControlador().find(id);
+			try {
+				// Intento obtener el valor de si el json incorpora o no el valor del campo "miniatura".
+				miniatura = Boolean.parseBoolean(rootNode.path("miniatura").asText());
+				contenido = Boolean.parseBoolean(rootNode.path("contenido").asText());
 				
 			}
+			catch (Exception ex) {
+				// Si ocurre una excepción no importa, no se enviará la miniatura
+			}
+
+			// El usuario guardado en sesión puede no tener la imagen u otros datos, primero recuperaré el usuario
+			// de la sesión y después lo buscaré en la BBDD.
+			u = (Usuario) request.getSession().getAttribute(Login.ID_USER_IN_SESSION);
 			
-			// Busco la acci�n que se quiere realizar
-			String accion = rootNode.path("accion").asText();
-			
-			if (accion != null && accion.equals("almacenar")) {
-				dto.put("nombreUsuario",u.getNombreUsuario());
-				dto.put("apellido",u.getApellido());
-				dto.put("email",u.getEmail());
-				//dto.put("sexo",u.getTipologiasexo());
-				dto.put("dni",u.getDni());
-				dto.put("direccion",u.getDireccion());
-				dto.put("telefono",u.getTelefono());
+			if (u != null) { // Si existe un usuario guardado en la sesión, obtengo sus datos
+				dto.put("userName", u.getNombreUsuario()); // Relleno el dto para construir el json de respuesta al servlet
 				dto.put("image", (miniatura)? u.getImagen().getMiniatura() : u.getImagen().getContenido());
-//							
-				UsuarioControlador.getControlador().save(u);
-			}
-			
-			if (accion != null && accion.equals("eliminar")) {
-				UsuarioControlador.getControlador().remove(u);
-			}
-			response.setContentType("application/json;charset=UTF-8");	// Codificación UTF-8 de los datos JSON que devuelve el Servlet
-			// Creo el JSON de salida y lo devuelvo al cliente
-			response.getWriter().println(mapper.writeValueAsString(dto));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+				dto.put("id", u.getId());
+				dto.put("apellido", u.getApellido());
+				dto.put("dni", u.getDni());
+				dto.put("direccion", u.getDireccion());
+				dto.put("email", u.getEmail());
+				dto.put("telefono", u.getTelefono());
+				//dto.put("idTipologia", u.getTipologiasexo());
+
+			} 
 		}
-	
+		catch (Exception ex) {
+			// Ocurrió una excepción en el acceso a datos o un error que nos impide acceder a los campos del JSON.
+			logger.error("Excepción al localizar los datos del usuario en sesión.", ex);
+		}
+
+		response.setContentType("application/json;charset=UTF-8");	// Codificación UTF-8 de los datos JSON que devuelve el Servlet
+		// Creo el JSON de salida y lo devuelvo al cliente
+		response.getWriter().println(mapper.writeValueAsString(dto));
+		
 	}
 
-	
 }
