@@ -2,6 +2,8 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,17 +35,26 @@ public class ListadoTipologiaSexo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json;charset=UTF-8");		
-
-		List<Tipologiasexo> entities = TipologiaSexoControlador.getControlador().findAllTipologiasSexo();
-
-		
+		List<Tipologiasexo> tipos = TipologiaSexoControlador.getControlador().findAllTipologiasSexo();
+		HashMap<String, Object> dto = new HashMap<String, Object>(); // "dto" significa Data Transfer Object
 		ObjectMapper mapper = new ObjectMapper();
-		out.println(mapper.writeValueAsString(entities));
 		
-		out.close();
-
+		List<HashMap<String, Object>> tipologias = new ArrayList<HashMap<String, Object>>();
+		
+		for (int i = 0; i < tipos.size(); i++) {
+			HashMap<String, Object> hm = new HashMap<String, Object>();
+			hm.put("id", tipos.get(i).getId());
+			hm.put("descripcion", tipos.get(i).getDescripcion());
+			
+			//Añadimos a la lista el hashmap con los datos
+			tipologias.add(hm);
+		}
+		
+		dto.put("idTipologia", tipologias);
+		// Relleno el dto para construir el json de respuesta al servlet
+		response.setContentType("application/json;charset=UTF-8");		
+		// Creo el JSON de salida y lo devuelvo al cliente
+		response.getWriter().println(mapper.writeValueAsString(dto));
 	}
 	
 	/**

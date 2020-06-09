@@ -7,14 +7,24 @@
 */
 		
 	$(document).ready(function () {
-			
-			sendJsonRequest("/GetFichaUsuario",
-				'',
-				function (data, status) {
-					muestraRegistroEnPantalla(data);
-				}, null);
-		
 
+		sendJsonRequest("/ListadoTipologiaSexo",
+		'',
+		function (data, status){
+			$.each(data.idTipologia, function(i, item){
+				$("#tipologiaSexo").append("<option value=" + item.id + ">" + item.descripcion + "</option>");
+			})
+			
+		}, null
+		);
+			
+		sendJsonRequest("/GetFichaUsuario",
+		'',
+		function (data, status) {
+			muestraRegistroEnPantalla(data);
+		}, null
+		);
+	
 	});
 	
 
@@ -26,7 +36,7 @@
 			$("#id").val(data.id);
 			$("#userName").val(data.userName);
 			$("#apellido").val(data.apellido);
-			//$("#idTipologia option[value=" + data.idTipologia + "]").attr("selected", "selected");
+			$("#idTipologia option[value=" + data.idTipologia + "]").attr("selected", "selected");
 			$("#dni").val(data.dni);
 			$("#direccion").val(data.direccion);
 			$("#email").val(data.email);
@@ -78,7 +88,13 @@
 							<input id="apellido" class="form-control" type="text" />
 						</div>
 					</div>
-				
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="tipologiaSexo">Sexo:</label>
+						<div class="col-lg-9">
+							<select id="tipologiaSexo" class="form-control">
+							</select>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label form-control-label" for="dni">DNI:</label>
 						<div class="col-lg-9">

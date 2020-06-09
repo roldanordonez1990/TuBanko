@@ -76,7 +76,7 @@ public class GetFichaUsuario extends SuperTipoServlet {
 				dto.put("direccion", u.getDireccion());
 				dto.put("email", u.getEmail());
 				dto.put("telefono", u.getTelefono());
-				//dto.put("idTipologia", u.getTipologiasexo());
+				dto.put("idTipologia", u.getTipologiasexo().getId());
 
 			} 
 		}
