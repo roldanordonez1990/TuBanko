@@ -67,7 +67,7 @@ public class Login extends SuperTipoServlet {
 			// Si encuentro al usuario establezco su imagen a null, porque en este caso no quiero que dicha imagen
 			// viaje en el JSON de salida.
 			else {
-				request.getSession().setMaxInactiveInterval(40); //tiempo de inactividad en segundos para la sesión
+				request.getSession().setMaxInactiveInterval(140); //tiempo de inactividad en segundos para la sesión
 				request.getSession().setAttribute(ID_USER_IN_SESSION, u);
 				logger.info("El usuario " + userOrEmail + " ha iniciado sesion");
 				dto.put("userName", u.getNombreUsuario()); // Relleno el dto para construir el json de respuesta al servlet

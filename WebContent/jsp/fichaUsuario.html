@@ -12,7 +12,7 @@
 		'',
 		function (data, status){
 			$.each(data.idTipologia, function(i, item){
-				$("#tipologiaSexo").append("<option value=" + item.id + ">" + item.descripcion + "</option>");
+				$("#idTipologia").append("<option value=" + item.id + ">" + item.descripcion + "</option>");
 			})
 			
 		}, null
@@ -24,8 +24,31 @@
 			muestraRegistroEnPantalla(data);
 		}, null
 		);
+
+		/**
+		 * Cuando se pulsa el botón de guardar
+		 */
+		 $("#btn-guardar").click(function () {
+			// Existe un input de tipo file, eso quiere decir que para obtener el contenido
+			// del fichero debemos esperar a que este se cargue completamente.
+			getDataFromFileInput($("#ficheroImagen"),
+				function (fileData) {
+
+					//Mensaje de alerta en el que aparecerán los datos que queremos enviar como JSON
+					alert(getJsonRegistroMostrado(fileData));
+
+					sendJsonRequest("/GetFichaUsuario",
+					
+						//Función con los datos que introducimos con el valor de los imput, pasados a JSON
+						getJsonRegistroMostrado(fileData),
+						function (data, status) {
+							muestraRegistroEnPantalla(data);
+							showAlertMessage($("#mensajito"), ALERT_INFO, "Usuario Guardado", "Correctamente"); // Cuando el usuario se guarde, muestro una alerta
+							
+						}, null);
+				});
 	
-	});
+	}); 
 	
 
 		/**Incorporamos los valores que nos da el JSON a los imput del formulario
@@ -45,19 +68,39 @@
 		}
 		
 
+		/*
+		* Obtener los datos mostrados en la página para el usuario, convertidos en JSON
+		*/
+		function getJsonRegistroMostrado(fileData) {
+			var jsonData = '{"id": "' + $("#id").val() +
+				'", "accion": "almacenar",' +
+				' "userName": "' + $("#userName").val() +
+				'", "apellido": "' + $("#apellido").val() +
+				'", "idTipologia": "' + $("#idTipologia").val() +
+				'", "dni": "' + $("#dni").val() +
+				'", "direccion": "' + $("#direccion").val() +
+				'", "email": "' + $("#email").val() +
+				'", "telefono": "' + $("#telefono").val() + '"';
+			if (fileData != null) {
+				jsonData += ', "imagen": "' + fileData + '"';
+			}
+			jsonData += '}';
+
+			return jsonData;
+		}
 		
-		
+	}); 
 </script>
 
 <style type="text/css">
 </style>
 
 
-<div class="row">
+<div class="row" >
 	<div class="mx-auto col-sm-6">
 		<!-- form user info -->
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header" id="mensajito">
 				<h4 class="mb-0" style="text-align: center;">Ficha del Usuario</h4>
 			</div>
 			<div class="card-body">
@@ -91,7 +134,7 @@
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label form-control-label" for="tipologiaSexo">Sexo:</label>
 						<div class="col-lg-9">
-							<select id="tipologiaSexo" class="form-control">
+							<select id="idTipologia" class="form-control">
 							</select>
 						</div>
 					</div>
