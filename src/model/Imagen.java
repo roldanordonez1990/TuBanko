@@ -11,10 +11,11 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Imagen.findAll", query="SELECT i FROM Imagen i")
-public class Imagen extends Entidad implements Serializable {
+public class Imagen implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	@Lob

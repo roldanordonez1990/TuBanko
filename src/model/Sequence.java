@@ -14,6 +14,7 @@ public class Sequence implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="SEQ_COUNT")
 	private int seqCount;
 

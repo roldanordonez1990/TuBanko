@@ -15,6 +15,7 @@ public class Usuario extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	private String apellido;
@@ -35,13 +36,21 @@ public class Usuario extends Entidad implements Serializable {
 	@OneToMany(mappedBy="usuario")
 	private List<Contrato> contratos;
 
+	//bi-directional many-to-one association to Mensajeria
+	@OneToMany(mappedBy="usuario1")
+	private List<Mensajeria> mensajerias1;
+
+	//bi-directional many-to-one association to Mensajeria
+	@OneToMany(mappedBy="usuario2")
+	private List<Mensajeria> mensajerias2;
+
 	//bi-directional many-to-one association to Tipologiasexo
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipologia")
 	private Tipologiasexo tipologiasexo;
 
 	//bi-directional many-to-one association to Imagen
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idImagen")
 	private Imagen imagen;
 
@@ -132,6 +141,50 @@ public class Usuario extends Entidad implements Serializable {
 		contrato.setUsuario(null);
 
 		return contrato;
+	}
+
+	public List<Mensajeria> getMensajerias1() {
+		return this.mensajerias1;
+	}
+
+	public void setMensajerias1(List<Mensajeria> mensajerias1) {
+		this.mensajerias1 = mensajerias1;
+	}
+
+	public Mensajeria addMensajerias1(Mensajeria mensajerias1) {
+		getMensajerias1().add(mensajerias1);
+		mensajerias1.setUsuario1(this);
+
+		return mensajerias1;
+	}
+
+	public Mensajeria removeMensajerias1(Mensajeria mensajerias1) {
+		getMensajerias1().remove(mensajerias1);
+		mensajerias1.setUsuario1(null);
+
+		return mensajerias1;
+	}
+
+	public List<Mensajeria> getMensajerias2() {
+		return this.mensajerias2;
+	}
+
+	public void setMensajerias2(List<Mensajeria> mensajerias2) {
+		this.mensajerias2 = mensajerias2;
+	}
+
+	public Mensajeria addMensajerias2(Mensajeria mensajerias2) {
+		getMensajerias2().add(mensajerias2);
+		mensajerias2.setUsuario2(this);
+
+		return mensajerias2;
+	}
+
+	public Mensajeria removeMensajerias2(Mensajeria mensajerias2) {
+		getMensajerias2().remove(mensajerias2);
+		mensajerias2.setUsuario2(null);
+
+		return mensajerias2;
 	}
 
 	public Tipologiasexo getTipologiasexo() {

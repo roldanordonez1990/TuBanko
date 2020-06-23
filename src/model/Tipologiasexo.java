@@ -64,10 +64,5 @@ public class Tipologiasexo extends Entidad implements Serializable {
 
 		return usuario;
 	}
-	
-	@Override
-	public String toString() {
-		return descripcion;
-	}
 
 }
