@@ -1,0 +1,62 @@
+<script>
+
+$(document).ready(function(){ //enviamos la peticion JSON a la url y los datos que enviamos al servlet
+	 sendJsonRequest("/GetMensajeria",
+	 '',
+	 function (data,status){ 
+		  // Función que se ejecutará cuando la petición se realice con éxito
+      	if (data != null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
+        // Paso por cada una de las cuentas corrientes, creando su bootstrap card y calculando el total de la suma de sus saldos
+          
+        var divMensajes = $("#divMensajes");
+        divMensajes.html(""); // Formateo el hueco de las cuentas corrientes
+        $.each(data.idMensajes, function (i, item)  {
+         
+          // Incorporo al div correspondiente una bootstrap card por cada item       
+          divMensajes.append(createBootstrapCardFromItem(item, "border-left-primary", "fas fa-money-check-alt"));       
+            });
+        }
+    },
+          function (resumenError) { //si sale mal la petición se ejecuta esto	 
+    
+          },
+     
+          $("#divMensajes")); //elemento en el que se introduce imagen de carga
+    });
+
+
+   
+ //ESTA FUNCION CREA LOS CARD EN BOOTSTRAP
+ function createBootstrapCardFromItem (item, borderClass){
+	    return "<div class='col-xl-12 col-md'> " +
+        "<div class='card col-md-12" + borderClass + " shadow h-100 py-2'>" +
+          "<div class='card-body'>" +
+            "<div class='row no-gutters align-items-center'>" +
+              "<div class='col mr-2'>" +
+                "<div class='text-xs font-weight-bold text-dark  mb-1'> Asunto : " + item.asunto + "</div>" +
+                "<div class='text-xs font-weight-bold text-dark  mb-1'> De : " + item.email_emisor + "</div>" +
+                "<div class='text-xs font-weight-bold text-dark text-uppercase mb-1'>" + item.mensaje + "</div>" +
+              "</div>" +
+            "</div>" +
+          "</div>" + 
+        "</div>" +
+      "</div>"
+}
+</script>
+
+<style type="text/css"></style>
+
+<div class="row" >
+    <div class="mx-auto col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0" style="text-align: center;">Mensajes</h4>
+            </div>
+  
+                <div class="row"  id="divMensajes"></div>
+                      
+            </div>
+    </div>
+
+         
+</div>

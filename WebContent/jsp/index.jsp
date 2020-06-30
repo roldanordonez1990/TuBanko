@@ -30,8 +30,9 @@
 						sendJsonRequest("/Login", // URL a la que envÃ­o la peticiÃ³n
 						JSON.stringify(obj),  // Datos JSON que envÃ­o al Servlet
 						function (data, status) {  // FunciÃ³n que se ejecutarÃ¡ cuando la peticiÃ³n se realice con Ã©xito
-					if (data == null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
-						howAlertMessage($("#login-container"), ALERT_DANGER, "Error", "El usuario y/o contrase&ntilde;a introducidos no son v&aacute;lidos");
+					if (data.userName == null) { // Si el servicio devuelve "null" significa que no se ha encontrado un usuario como el que se quiere autenticar
+					alert("nooooooooo");
+						showAlertMessage($("#login-container"), ALERT_DANGER, "Error", "El usuario y/o contrase&ntilde;a introducidos no son v&aacute;lidos");
 					}
 					else { // AutenticaciÃ³n correcta, redirigimos al portal de la aplicaciÃ³n.
 					window.location.href = "portal.jsp";

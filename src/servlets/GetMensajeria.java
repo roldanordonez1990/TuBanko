@@ -65,7 +65,7 @@ public class GetMensajeria extends SuperTipoServlet {
 			if (u != null ) { // Si existe un usuario guardado en la sesión, obtenemos todos sus mensajes si los tuviera
 
 				// obtengo todos los mensajes que ha recibido el usuario
-				List<Mensajeria> mensajes = MensajesControlador.getControlador().findAll();
+				List<Mensajeria> mensajes = MensajesControlador.getControlador().findAll(u.getId());
 
 				List<HashMap<String, Object>> mensajesLeidos = new ArrayList<HashMap<String, Object>>();
 				// List<HashMap<String, Object>> mensajesNoLeidos = new ArrayList<HashMap<String, Object>>();

@@ -71,7 +71,7 @@ public class Login extends SuperTipoServlet {
 				request.getSession().setAttribute(ID_USER_IN_SESSION, u);
 				logger.info("El usuario " + userOrEmail + " ha iniciado sesion");
 				dto.put("userName", u.getNombreUsuario()); // Relleno el dto para construir el json de respuesta al servlet
-				
+				dto.put("pass", u.getPassword());
 			}
 			//else {
 				//u.setImagen(null);
@@ -80,6 +80,7 @@ public class Login extends SuperTipoServlet {
 		catch (Exception ex) {
 			// Ocurri� una excepci�n en el acceso a datos o un error que nos impide acceder a los campos del JSON.
 			logger.error("Excepci�n al buscar al usuario o email: '" + userOrEmail + "' con password: '" + password, ex + "'");
+			
 		}
 		
 		// Creo el JSON de salida y lo devuelvo al cliente

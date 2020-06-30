@@ -55,6 +55,15 @@
         </span>
       </li>  
 
+
+      <!--Nav Item - messages-->
+      <li class="nav-item">	
+      	<span role="button" class="nav-link bankonterNavBarLink" toLoadInPageContent="mensajeria.html">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        	<span>Bandeja de entrada</span>
+        </span>
+      </li>  
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

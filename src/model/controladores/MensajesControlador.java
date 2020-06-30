@@ -47,9 +47,10 @@ public class MensajesControlador extends Controlador {
 	 * @return
 	 */
 	
-	public List<Mensajeria> findAll() {
+	public List<Mensajeria> findAll(int id) {
 		EntityManager em = getEntityManagerFactory().createEntityManager();
-		Query q = em.createQuery("SELECT c FROM Mensajeria c", Mensajeria.class);
+		Query q = em.createNativeQuery("SELECT * FROM Mensajeria where id_receptor = ?", Mensajeria.class);
+		q.setParameter(1, id);
 		List<Mensajeria> resultado = (List<Mensajeria>) q.getResultList();
 		em.close();
 		return resultado;
