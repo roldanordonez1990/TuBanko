@@ -14,7 +14,6 @@
     $("#pageContent").load("situacionGlobal.html"); // Cargo la situaciÃ³n global, un resumen de cuentas, prÃ©stamos y tarjetas, de momento estÃ¡tico
    
 })
-
 </script>
 
 
@@ -59,11 +58,12 @@
       <!--Nav Item - messages-->
       <li class="nav-item">	
       	<span role="button" class="nav-link bankonterNavBarLink" toLoadInPageContent="mensajeria.html">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <i class="fa fa-inbox" aria-hidden="true"></i>
         	<span>Bandeja de entrada</span>
         </span>
       </li>  
 
+    
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -91,7 +91,12 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-
+            <li class="nav-item">	
+              <a role="button" href="#" class="dropdown-item nav-link" data-toggle="modal" data-target="#logoutModalMensaje">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+              </a>
+            </li>  
+            <div class="topbar-divider d-none d-sm-block"></div>
  
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
@@ -167,6 +172,41 @@
       </div>
     </div>
   </div>
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModalMensaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <class class="modal-content">
+          <div class="card-header" id="mensajito">
+            <h6 class="mb-0" style="text-align: center;">Escribe un mensaje nuevo</h6>
+          </div>
+          <form class="form" role="form" autocomplete="off">
+            <div class="form-group row">
+              <label class="col-lg-8 col-form-label form-control-label ml-2" for="primerApellido">
+                Asunto:</label>
+              <div class="col-lg-9">
+                <input id="apellido" class="form-control ml-1" type="text" />
+              </div>
+
+              <label class="col-lg-8 col-form-label form-control-label ml-2" for="primerApellido">
+                Destinatario:</label>
+              <div class="col-lg-9">
+                <input id="apellido" class="form-control ml-1" type="text" />
+              </div>
+
+              <textarea class="col-lg-8 col-form-label form-control-label mt-4 ml-3" placeholder="Escribe tu mensaje..."></textarea>
+            </div>
+          </form>
+         
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Enviar</button>
+          </div>
+        </class>
+        </div>
+      </div>
+    </div>
+  
 
 
   <script src="../js/sb-admin-2.js"></script>
