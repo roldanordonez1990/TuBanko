@@ -1,0 +1,145 @@
+
+<script>
+
+    $(document).ready(function(){ //enviamos la peticion JSON a la url y los datos que enviamos al servlet
+        
+    
+              $("#btn-enviar").click(function() {
+                  
+                console.log("has hecho clik");
+                getDataFromFileInput($(""),
+                  function (fileData) {
+                    //Mensaje de alerta en el que aparecerán los datos que queremos enviar como JSON
+                    alert(getJsonRegistroMostradoMensaje(fileData));
+                  sendJsonRequest("/GetEnviarMensaje",
+    
+                  getJsonRegistroMostradoMensaje(fileData),
+    
+                  function (data, status) {
+    
+                    muestraRegistroEnPantallaMensaje(data),
+                    showAlertMessage($("#mensajeEnviado"), ALERT_INFO, "Mensaje Enviado", "Correctamente");
+                  }, null);
+              });
+              
+            
+        });
+
+    
+    
+    
+        function muestraRegistroEnPantallaMensaje(data) {
+                
+                $("#id_mensaje").val(data.id);
+                $("#asunto").val(data.asunto);
+                $("#emisor").val(data.emisor);
+                $("#destinatario").val(data.destinatario);
+            
+                $("#email_emisor").val(data.email_emisor);
+                $("#email_receptor").val(data.email_receptor);
+                $("#mensaje").val(data.mensaje);
+    
+            }
+    
+    
+    
+        /*
+            * Obtener los datos mostrados en la página por el usuario, convertidos en JSON
+            */
+            function getJsonRegistroMostradoMensaje(fileData) {
+                var jsonData = '{"id": "' + $("#id").val() +
+                    '", "accion": "enviar",' +
+                    ' "asunto": "' + $("#asunto").val() +
+                    '", "destinatario": "' + $("#destinatario").val() +
+                    '", "emisor": "' + $("#emisor").val() +
+                    '", "email_emisor": "' + $("#email_emisor").val() +
+                    '", "email_receptor": "' + $("#email_receptor").val() +
+                    '", "mensaje": "' + $("#mensaje").val() + '"';
+    
+                jsonData += '}';
+    
+                return jsonData;
+            }
+    
+      });
+    
+      
+    </script>
+
+
+
+
+<div class="row" >
+	<div class="mx-auto col-sm-6">
+		<!-- form user info -->
+		<div class="card">
+			<div class="card-header" id="mensajeEnviado">
+				<h4 class="mb-0" style="text-align: center;">Envía un Mensaje</h4>
+			</div>
+			<div class="card-body">
+
+				
+				<form id="form1" name="form1" method="post" enctype="multipart/form-data" class="form" role="form"
+					autocomplete="off">
+					
+					<input type="hidden" id="id" />
+					
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="nombre">Asunto:</label>
+						<div class="col-lg-9">
+							<input id="asunto" class="form-control" type="text" />
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="emisor">
+							Emisor:</label>
+						<div class="col-lg-9">
+							<input id="emisor" class="form-control" type="number" />
+						</div>
+                    </div>
+                    
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="destinatario">
+							Destinatario:</label>
+						<div class="col-lg-9">
+							<input id="destinatario" class="form-control" type="number" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="email_emisor">De:</label>
+						<div class="col-lg-9">
+							<input id="email_emisor" class="form-control" type="text"/>
+						
+						</div>
+                    </div>
+
+                    <div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="email_receptor" style="font-size: small;">Email receptor:</label>
+						<div class="col-lg-9">
+							<input id="email_receptor" class="form-control" type="text"/>
+						
+						</div>
+                    </div>
+                    
+                    <div class="form-group row">
+						<label class="col-lg-3 col-form-label form-control-label" for="mensaje"></label>
+						<div class="col-lg-9">
+                            <textarea class="col-lg-12 col-form-label form-control-label" placeholder="Escribe tu mensaje..." id="mensaje" type="text"></textarea>
+						
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-lg-9">
+							<span class='btn btn-success fa fa-paper-plane' title='enviar' id="btn-enviar">
+                                Enviar</span>
+						</div>
+                    </div>
+                    
+                    
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

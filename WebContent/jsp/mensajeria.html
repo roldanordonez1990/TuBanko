@@ -47,17 +47,23 @@ $(document).ready(function(){ //enviamos la peticion JSON a la url y los datos q
 
 <style type="text/css"></style>
 
-<div class="row" >
-    <div class="mx-auto col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="mb-0" style="text-align: center;">Mensajes</h4>
-            </div>
-  
-                <div class="row"  id="divMensajes"></div>
-      
-            </div>
-    </div>
 
-         
+<div class="row" >
+  <div class="mx-auto col-sm-6">
+      <div class="card">
+          <div class="card-header">
+              <h4 class="mb-0" style="text-align: center;">Esta es tu Bandeja de Entrada</h4>
+              <a class="dropdown-item btn btn-circle bankonterNavBarLink" toLoadInPageContent="enviarMensaje.html">
+                <i class="fa fa-paper-plane"></i>
+              </a>
+          </div>
+              <div class="row"  id="divMensajes"></div>
+          </div>
+  </div>
+
+       
 </div>
+
+<script>
+reInit();
+</script>

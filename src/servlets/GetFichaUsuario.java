@@ -87,9 +87,12 @@ public class GetFichaUsuario extends SuperTipoServlet {
 
 			}
 
-			// Busco la acción que se quiere realizar
-			String accion = rootNode.path("accion").asText();
-			Imagen i = null;
+			// Buscamos la acción a realizar
+				String accion = null;
+				if (rootNode.path("accion") != null) {
+							accion = rootNode.path("accion").asText();
+						}
+			
 
 			//Si el usuario existe y la acción es la de almacenar, obtenemos los datos introducidos por el cliente como JSON y serán guardados
 			if (u != null && accion != null && accion.equals("almacenar")) {
@@ -105,8 +108,17 @@ public class GetFichaUsuario extends SuperTipoServlet {
 					String strImagen = rootNode.path("imagen").asText();
 					if (strImagen.contains("base64,")) {
 						String imageData = strImagen.split("base64,")[1];
-						i.setContenido(Base64.decode(imageData));
-						u.setImagen(i);
+						if(u.getImagen() == null) {
+							Imagen i = new Imagen();
+							i.setContenido(Base64.decode(imageData));
+							u.setImagen(i);
+							UsuarioControlador.getControlador().save(i);
+						}
+						else {
+							u.getImagen().setContenido(Base64.decode(imageData));
+							UsuarioControlador.getControlador().save(u.getImagen());
+						}
+						
 					}
 				
 					
