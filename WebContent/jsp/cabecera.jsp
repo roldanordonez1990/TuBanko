@@ -14,7 +14,11 @@
 	  <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
 	  integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
 	  crossorigin="anonymous">
+	  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 	  <script srd="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+	   <!-- Include the Quill library -->
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   
 	  <script src="../js/jquery-utils.js"></script>
 	  
@@ -22,8 +26,7 @@
 	  <!-- Custom fonts for this template-->
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" type="text/css">
 	  <link  href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-		 
-  
+
 	  <!-- Custom styles for this template-->
 	  <link href="../css/sb-admin-2.css" rel="stylesheet">
 	 
