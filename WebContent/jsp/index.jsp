@@ -69,7 +69,7 @@
 								<div class="p-5">
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Inicia sesi&oacute;n en
-											TuBanKo</h1>
+											TuBanKooo</h1>
 									</div>
 									<form id="formLogin">
 										<div class="form-group">

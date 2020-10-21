@@ -12,7 +12,7 @@
     // Realizo la carga de las diferentes partes de la pÃ¡gina del portal
     $("#datosUsuarioEnSesion").load("infoUsuarioEnPortal.html"); // Cargo la esquina superior izquierda, con los datos del usuario y su foto
     $("#pageContent").load("situacionGlobal.html"); // Cargo la situaciÃ³n global, un resumen de cuentas, prÃ©stamos y tarjetas, de momento estÃ¡tico
-   
+    
 })
 </script>
 
@@ -133,6 +133,10 @@
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; TuBanko 2020</span>
           </div>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" style="text-align: center;">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>ATENCI&OacuteN!</strong> &Eacuteste sitio web usa cookies, si permanece aqu&iacute acepte su uso
         </div>
       </footer>
       <!-- End of Footer -->
