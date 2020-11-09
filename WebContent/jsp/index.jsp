@@ -11,7 +11,7 @@
     $("#loginIma").css("background-size", "cover");
   
 					// AcciÃ³n a realizar cuando el usuario pulse el botÃ³n "#btnEntrar". Recordar que dicho botÃ³n tiene que incluir el type="button". Si no se pusiera
-					// ese type el botÃ³n se comportarÃ­a por defecto como type="submit" y enviarÃ­a el formulario, cosa que no es lo que queremos.
+					// ese type el botÃ³n se comportarÃ­aaa por defecto como type="submit" y enviarÃ­a el formulario, cosa que no es lo que queremos.
 					$("#btnEntrar").click(function() {
 
 					// Comienzo la acciÃ³n validando el formulario antes de su envÃ­o        
