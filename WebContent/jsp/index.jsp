@@ -14,7 +14,7 @@
 					// ese type el botÃ³n se comportarÃ­a por defecto como type="submit" y enviarÃ­a el formulario, cosa que no es lo que queremos.
 					$("#btnEntrar").click(function() {
 
-					// Comienzo la acciÃ³n validando el formulario antes de su envÃ­o
+					// Comienzo la acciÃ³n validando el formulario antes de su envÃ­o        
 					if (!checkFormValidity($("#formLogin"))) { // Compruebo la validaciÃ³n con una funciÃ³n que podemos encontrar en el fichero jquery-utils.js
 						showAlertMessage($("#login-container"), ALERT_DANGER, "Datos no v&aacute;lidos", "Has introducido al menos un dato no v&aacute;lido"); // Muestro una alerta
 					}
@@ -69,7 +69,7 @@
 								<div class="p-5">
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Inicia sesi&oacute;n en
-											TuBanKooo</h1>
+											TuBanK</h1>
 									</div>
 									<form id="formLogin">
 										<div class="form-group">
